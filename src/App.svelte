@@ -24,6 +24,8 @@
   <!-- end of main  -->
 
   <div class="container about-me">
+    <div class="decoration one" />
+    <div class="decoration two" />
     <div class="content header">Who am I?</div>
     <p>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
@@ -100,5 +102,29 @@
   .content > h3 {
     width: 60%;
     margin-bottom: 2rem;
+  }
+
+  /* main page done  */
+
+  .decoration {
+    position: absolute;
+    border-radius: 50px 0 0 50px;
+    height: 115px;
+  }
+
+  .decoration.one {
+    z-index: 3;
+    margin-top: 5rem;
+    right: 0;
+    background-color: #00adb5;
+    width: calc(50% + 175px);
+  }
+
+  .decoration.two {
+    z-index: 2;
+    transform: translateY(calc(115px + 1.5rem));
+    right: 0;
+    background-color: #007f85;
+    width: calc(50% + 115px);
   }
 </style>
