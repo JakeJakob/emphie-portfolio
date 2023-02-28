@@ -28,9 +28,12 @@
     <div class="content header">
       <div class="img" />
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
-        temporibus praesentium placeat necessitatibus. Consequuntur dolor nihil
-        iste et repudiandae quasi fugit quia? Enim, nostrum reiciendis?
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis sit
+        illum sed, enim recusandae earum dignissimos dolor, tempora, aliquid
+        neque repellendus! Rem omnis quisquam ab dolore quam. Animi voluptatum
+        neque fugit quae ullam magni molestiae illum facere eligendi autem
+        officiis dolorem reprehenderit, eos tempore ipsum a quo voluptatem
+        quaerat voluptates.
       </p>
     </div>
     <button class="btn-cta">Why You should hire </button>
@@ -39,17 +42,32 @@
   <!-- end of about-me  -->
 
   <div class="container gallery">
-    <div class="grid-container gallery">
+    <div class="grid-container">
       <div class="grid-element">
-        <grid-img />
+        <div class="grid-img" />
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi
+          fugiat eveniet possimus! Sint fugiat, rerum ipsam ad ab, odit magnam
+          voluptates veniam facilis ea esse?
+        </p>
         <button class="btn-cta grid">See this project</button>
       </div>
       <div class="grid-element">
-        <grid-img />
+        <div class="grid-img" />
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi
+          fugiat eveniet possimus! Sint fugiat, rerum ipsam ad ab, odit magnam
+          voluptates veniam facilis ea esse?
+        </p>
         <button class="btn-cta grid">See this project</button>
       </div>
       <div class="grid-element">
-        <grid-img />
+        <div class="grid-img" />
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi
+          fugiat eveniet possimus! Sint fugiat, rerum ipsam ad ab, odit magnam
+          voluptates veniam facilis ea esse?
+        </p>
         <button class="btn-cta grid">See this project.</button>
       </div>
     </div>
@@ -64,6 +82,7 @@
 
 <style>
   .main-page {
+    border-bottom: solid 1px #eee;
     display: flex;
     justify-content: space-between;
   }
@@ -139,11 +158,12 @@
   } */
 
   .about-me {
+    border-bottom: solid 1px #eee;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 80vh;
+    height: 100vh;
 
     background-color: #222831;
   }
@@ -162,6 +182,9 @@
   }
 
   .content.header > .img {
+    border: solid #00adb5;
+    border-width: 1px 0 0 1px;
+
     background-image: url("C:\Users\Kuba Wlos\Documents\Programming\Emphie_solutions_portfolio_jakeww\Portfolio\images\IMG_1252.jpeg");
     background-size: cover;
     background-position: center;
@@ -185,4 +208,48 @@
   } */
 
   /* this layout is not working, too bad! gonna use a different one l8r */
+
+  .grid-container {
+    height: 100%;
+    display: flex;
+    border-bottom: solid 1px #eee;
+    align-items: baseline;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .grid-element {
+    width: 400px;
+    position: relative;
+    border: solid 1px #eee;
+    padding: 1rem;
+    aspect-ratio: 3/2;
+  }
+
+  .grid-element > .grid-img {
+    width: 100%;
+    aspect-ratio: inherit;
+    background-image: url("../images/pobrane.jpg");
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+  }
+
+  .grid-element > p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  .grid-element > .btn-cta {
+    top: 0;
+    left: 0;
+    position: absolute;
+    border: line 1px inherit;
+    background-color: #00adb5;
+    color: #eee;
+    box-shadow: 1px #222831;
+    display: none;
+    z-index: 3;
+  }
 </style>
