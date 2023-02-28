@@ -44,6 +44,8 @@
   <div class="container gallery">
     <div class="grid-container gallery">
       <div class="grid-element">
+        <!-- <div class="cover" /> -->
+
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
           perspiciatis explicabo minus ipsam ipsum iure blanditiis a temporibus
@@ -53,6 +55,7 @@
         <button class="btn-cta grid">See this project</button>
       </div>
       <div class="grid-element">
+        <div class="cover" />
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
           perspiciatis explicabo minus ipsam ipsum iure blanditiis a temporibus
@@ -62,6 +65,8 @@
         <button class="btn-cta grid">See this project</button>
       </div>
       <div class="grid-element">
+        <div class="cover" />
+
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
           perspiciatis explicabo minus ipsam ipsum iure blanditiis a temporibus
@@ -211,13 +216,15 @@
 
   .grid-container {
     display: flex;
-    box-sizing: border-box;
+    justify-content: center;
     align-items: center;
-    /* transform: translateY(-30%); */
-    justify-content: space-between;
     height: 100vh;
-    margin: 0 auto;
-    width: 80%;
+    max-width: 100vw;
+    column-gap: 3rem;
+    row-gap: 6rem;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
     border-bottom: 1px #eee solid;
   }
 
@@ -226,20 +233,13 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 20vmax;
-    aspect-ratio: 3/2;
-
-    position: absolute;
-    top: 0;
-    left: 0;
+    width: 400px;
     z-index: 4;
+    aspect-ratio: 3/2;
 
     transition: all 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
   .grid-element {
-    width: 100%;
-    margin-top: -20%;
-    margin-right: auto;
     position: relative;
   }
 
@@ -247,25 +247,32 @@
     box-sizing: border-box;
     padding: 0.5rem;
     background-color: #00adb5;
-    width: 20vmax;
+    width: 40vmin;
     position: absolute;
-    aspect-ratio: 3/2;
-    overflow: hidden;
     z-index: 3;
   }
   .grid-element > .btn-cta {
-    opacity: 1;
-    box-shadow: none;
-    z-index: 2; 
-    transition: transform .4s cubic-bezier(0.215, 0.610, 0.355, 1);
+    position: absolute;
+    top: 0;
+    width: 400px;
+    z-index: 1;
   }
 
   .grid-element:hover > .btn-cta {
-    opacity: 1;
-    transform: translateY(calc(300% + 1rem));
+    transform: translateY(calc(400% + 1.5rem));
   }
 
   .grid-element:hover > .grid-img {
     transform: translateY(-100%);
+  }
+
+  .grid-element > .cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #00adb5;
+    z-index: 2;
   }
 </style>
