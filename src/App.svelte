@@ -28,9 +28,12 @@
     <div class="content header">
       <div class="img" />
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
-        temporibus praesentium placeat necessitatibus. Consequuntur dolor nihil
-        iste et repudiandae quasi fugit quia? Enim, nostrum reiciendis?
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis sit
+        illum sed, enim recusandae earum dignissimos dolor, tempora, aliquid
+        neque repellendus! Rem omnis quisquam ab dolore quam. Animi voluptatum
+        neque fugit quae ullam magni molestiae illum facere eligendi autem
+        officiis dolorem reprehenderit, eos tempore ipsum a quo voluptatem
+        quaerat voluptates.
       </p>
     </div>
     <button class="btn-cta">Why You should hire </button>
@@ -38,42 +41,20 @@
 
   <!-- end of about-me  -->
 
-  <div class="container grid-gallery">
-    <div class="grid-element">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-        adipisci placeat, unde velit tempore officiis eius quos pariatur!
-        Perspiciatis necessitatibus illum hic fuga qui voluptatem exercitationem
-        ab nobis excepturi totam, natus aliquam doloremque repellendus
-        explicabo, alias tenetur doloribus laudantium iure iusto minima! Porro
-        quaerat accusamus facilis nemo mollitia accusantium ab?
-      </p>
-      <div class="img" />
-      <button class="btn-cta" />
-    </div>
-    <div class="grid-element">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-        adipisci placeat, unde velit tempore officiis eius quos pariatur!
-        Perspiciatis necessitatibus illum hic fuga qui voluptatem exercitationem
-        ab nobis excepturi totam, natus aliquam doloremque repellendus
-        explicabo, alias tenetur doloribus laudantium iure iusto minima! Porro
-        quaerat accusamus facilis nemo mollitia accusantium ab?
-      </p>
-      <div class="img" />
-      <button class="btn-cta" />
-    </div>
-    <div class="grid-element">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-        adipisci placeat, unde velit tempore officiis eius quos pariatur!
-        Perspiciatis necessitatibus illum hic fuga qui voluptatem exercitationem
-        ab nobis excepturi totam, natus aliquam doloremque repellendus
-        explicabo, alias tenetur doloribus laudantium iure iusto minima! Porro
-        quaerat accusamus facilis nemo mollitia accusantium ab?
-      </p>
-      <div class="img" />
-      <button class="btn-cta" />
+  <div class="container gallery">
+    <div class="grid-container gallery">
+      <div class="grid-element">
+        <grid-img />
+        <button class="btn-cta grid">See this project</button>
+      </div>
+      <div class="grid-element">
+        <grid-img />
+        <button class="btn-cta grid">See this project</button>
+      </div>
+      <div class="grid-element">
+        <grid-img />
+        <button class="btn-cta grid">See this project.</button>
+      </div>
     </div>
   </div>
 
@@ -86,6 +67,7 @@
 
 <style>
   .main-page {
+    border-bottom: solid 1px #eee;
     display: flex;
     justify-content: space-between;
   }
@@ -161,11 +143,12 @@
   } */
 
   .about-me {
+    border-bottom: solid 1px #eee;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 80vh;
+    height: 100vh;
 
     background-color: #222831;
   }
@@ -184,6 +167,9 @@
   }
 
   .content.header > .img {
+    border: solid #00adb5;
+    border-width: 1px 0 0 1px;
+
     background-image: url("C:\Users\Kuba Wlos\Documents\Programming\Emphie_solutions_portfolio_jakeww\Portfolio\images\IMG_1252.jpeg");
     background-size: cover;
     background-position: center;
@@ -207,27 +193,4 @@
   } */
 
   /* this layout is not working, too bad! gonna use a different one l8r */
-  .grid-gallery {
-    margin: 0 auto;
-    width: 80%;
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-  }
-
-  .grid-element {
-    height: 33vh;
-    aspect-ratio: 3/2;
-  }
-
-  .grid-element > p {
-    z-index: 1;
-  }
-
-  .grid-element > .img {
-    z-index: 2;
-    background-image: url("../images/");
-  }
 </style>
