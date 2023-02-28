@@ -211,9 +211,11 @@
 
   .grid-container {
     display: flex;
-    margin-top: 30%;
+    box-sizing: border-box;
+    align-items: center;
+    /* transform: translateY(-30%); */
     justify-content: space-between;
-    height: 80vh;
+    height: 100vh;
     margin: 0 auto;
     width: 80%;
     border-bottom: 1px #eee solid;
@@ -224,7 +226,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 40vmin;
+    width: 20vmax;
     aspect-ratio: 3/2;
 
     position: absolute;
@@ -235,6 +237,8 @@
     transition: all 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
   .grid-element {
+    width: 100%;
+    margin-top: -20%;
     margin-right: auto;
     position: relative;
   }
@@ -243,26 +247,27 @@
     box-sizing: border-box;
     padding: 0.5rem;
     background-color: #00adb5;
-    width: 40vmin;
+    width: 20vmax;
     position: absolute;
-
+    aspect-ratio: 3/2;
+    overflow: hidden;
     z-index: 3;
   }
   .grid-element > .btn-cta {
-    opacity: 0;
-    width: 40vmin;
+    opacity: 1;
+    width: 75%;
     top: calc(2 * 100vh);
     position: absolute;
     top: 0;
     left: 0;
     box-shadow: none;
     z-index: 2;
-    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: transform .4s cubic-bezier(0.215, 0.610, 0.355, 1);
   }
 
   .grid-element:hover > .btn-cta {
     opacity: 1;
-    transform: translateY(calc(300% + 1.5rem));
+    transform: translateY(27vmin);
   }
 
   .grid-element:hover > .grid-img {
