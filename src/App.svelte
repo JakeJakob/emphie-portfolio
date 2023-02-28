@@ -255,19 +255,14 @@
   }
   .grid-element > .btn-cta {
     opacity: 1;
-    width: 75%;
-    top: calc(2 * 100vh);
-    position: absolute;
-    top: 0;
-    left: 0;
     box-shadow: none;
-    z-index: 2;
+    z-index: 2; 
     transition: transform .4s cubic-bezier(0.215, 0.610, 0.355, 1);
   }
 
   .grid-element:hover > .btn-cta {
     opacity: 1;
-    transform: translateY(27vmin);
+    transform: translateY(calc(300% + 1rem));
   }
 
   .grid-element:hover > .grid-img {
