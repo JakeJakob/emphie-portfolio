@@ -58,10 +58,16 @@ button {
   text-transform: uppercase;
   font-size: 1rem;
   padding: 16px 40px;
-  border-style: none;
-  background: linear-gradient(to right,
-      var(--accent), var(--second-accent), var(--accent));
-  color: var(--text);
+  border: solid 3px var(--accent);
+  /* box-shadow: 0 0 40px 0 var(--accent); */
+  background-color: transparent;
+  color: var(--accent);
+  transition: all .1s linear;
+  cursor: pointer;
 }
 
-button:hover {}
+button:hover {
+  background-color: var(--accent);
+  color: #eee;
+  box-shadow: .2rem .2rem var(--second-accent);
+}
