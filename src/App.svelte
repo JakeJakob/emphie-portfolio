@@ -44,15 +44,30 @@
   <div class="container gallery">
     <div class="grid-container gallery">
       <div class="grid-element">
-        <grid-img />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
+          perspiciatis explicabo minus ipsam ipsum iure blanditiis a temporibus
+          consequatur harum vitae alias dolor, nobis fuga ratione magni animi...
+        </p>
+        <div class="grid-img" />
         <button class="btn-cta grid">See this project</button>
       </div>
       <div class="grid-element">
-        <grid-img />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
+          perspiciatis explicabo minus ipsam ipsum iure blanditiis a temporibus
+          consequatur harum vitae alias dolor, nobis fuga ratione magni animi...
+        </p>
+        <div class="grid-img" />
         <button class="btn-cta grid">See this project</button>
       </div>
       <div class="grid-element">
-        <grid-img />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
+          perspiciatis explicabo minus ipsam ipsum iure blanditiis a temporibus
+          consequatur harum vitae alias dolor, nobis fuga ratione magni animi...
+        </p>
+        <div class="grid-img" />
         <button class="btn-cta grid">See this project.</button>
       </div>
     </div>
@@ -193,4 +208,64 @@
   } */
 
   /* this layout is not working, too bad! gonna use a different one l8r */
+
+  .grid-container {
+    display: flex;
+    margin-top: auto;
+    justify-content: space-between;
+    height: 80vh;
+    margin: 0 auto;
+    width: 80%;
+    border-bottom: 1px #eee solid;
+  }
+
+  .grid-img {
+    background-image: url("../images/pobrane.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 40vmin;
+    aspect-ratio: 3/2;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+
+    transition: all 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+  .grid-element {
+    margin-right: auto;
+    position: relative;
+  }
+
+  .grid-element > p {
+    box-sizing: border-box;
+    padding: 0.5rem;
+    background-color: #00adb5;
+    width: 40vmin;
+    position: absolute;
+
+    z-index: 3;
+  }
+  .grid-element > .btn-cta {
+    opacity: 0;
+    width: 40vmin;
+    top: calc(2 * 100vh);
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    z-index: 2;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .grid-element:hover > .btn-cta {
+    opacity: 1;
+    transform: translateY(calc(300% + 1.5rem));
+  }
+
+  .grid-element:hover > .grid-img {
+    transform: translateY(-100%);
+  }
 </style>
