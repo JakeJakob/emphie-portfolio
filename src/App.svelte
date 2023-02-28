@@ -211,7 +211,7 @@
 
   .grid-container {
     display: flex;
-    margin-top: auto;
+    margin-top: 30%;
     justify-content: space-between;
     height: 80vh;
     margin: 0 auto;
