@@ -10,24 +10,38 @@
   --main: #222831;
   --second: #393E46;
   --accent: #00ADB5;
+  --second-accent: #007F85;
   --text: #eee;
   color: var(--text);
 
 
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   background-color: var(--main);
   font-family: "Poppins", sans-serif;
 }
 
 .container {
   height: 100vh;
-  margin: 0;
+}
+
+h1 {
+  font-size: 96px;
+  font-weight: 400;
+}
+
+h3 {
+
+  font-size: 24px;
+  font-weight: 400;
 }
 
 a {
@@ -38,3 +52,16 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+button {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 16px 40px;
+  border-style: none;
+  background: linear-gradient(to right,
+      var(--accent), var(--second-accent), var(--accent));
+  color: var(--text);
+}
+
+button:hover {}

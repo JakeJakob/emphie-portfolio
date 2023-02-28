@@ -2,21 +2,23 @@
 </script>
 
 <main>
-  <nav>
-    <ul class="nav-list">
-      <li class="nav-element"><a href=".">Home</a></li>
-      <li class="nav-element"><a href=".">About</a></li>
-      <li class="nav-element"><a href=".">My Projects</a></li>
-      <li class="nav-element"><a href=".">Contact Me</a></li>
-    </ul>
-  </nav>
-
-  <!-- end of navbar  -->
-
   <div class="container main-page">
-    <h1>Hello!</h1>
-    <h3>I'm Jacob a professional Full Stack Web Developer.</h3>
-    <button class="btn-cta">My Story</button>
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-element"><a href=".">Home</a></li>
+        <li class="nav-element"><a href=".">About</a></li>
+        <li class="nav-element"><a href=".">My Projects</a></li>
+        <li class="nav-element"><a href=".">Contact Me</a></li>
+      </ul>
+    </nav>
+
+    <!-- end of navbar  -->
+
+    <div class="content">
+      <h1>Hello!</h1>
+      <h3>My name is Jacob and I'm a professional Web Designer.</h3>
+      <button class="btn-cta">My Story</button>
+    </div>
   </div>
 
   <!-- end of main  -->
@@ -59,14 +61,21 @@
 </main>
 
 <style>
+  .main-page {
+    display: flex;
+    justify-content: space-between;
+  }
   nav {
-    width: 1rem;
-    height: 100vh;
+    width: 55px;
   }
   .nav-list {
+    width: 100%;
+    height: 100%;
     display: flex;
+    align-items: center;
     flex-direction: column;
-    margin-left: -0.3rem;
+    margin-top: 1rem;
+    padding: 0;
     gap: 4rem;
   }
   .nav-element {
@@ -82,5 +91,14 @@
     list-style: none;
   }
 
-  /* end of nav styling  */
+  /* end of nav styling (for now) */
+
+  .content {
+    padding: 5rem;
+  }
+
+  .content > h3 {
+    width: 60%;
+    margin-bottom: 2rem;
+  }
 </style>
