@@ -38,20 +38,42 @@
 
   <!-- end of about-me  -->
 
-  <div class="container gallery">
-    <div class="grid-container gallery">
-      <div class="grid-element">
-        <grid-img />
-        <button class="btn-cta grid">See this project</button>
-      </div>
-      <div class="grid-element">
-        <grid-img />
-        <button class="btn-cta grid">See this project</button>
-      </div>
-      <div class="grid-element">
-        <grid-img />
-        <button class="btn-cta grid">See this project.</button>
-      </div>
+  <div class="container grid-gallery">
+    <div class="grid-element">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+        adipisci placeat, unde velit tempore officiis eius quos pariatur!
+        Perspiciatis necessitatibus illum hic fuga qui voluptatem exercitationem
+        ab nobis excepturi totam, natus aliquam doloremque repellendus
+        explicabo, alias tenetur doloribus laudantium iure iusto minima! Porro
+        quaerat accusamus facilis nemo mollitia accusantium ab?
+      </p>
+      <div class="img" />
+      <button class="btn-cta" />
+    </div>
+    <div class="grid-element">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+        adipisci placeat, unde velit tempore officiis eius quos pariatur!
+        Perspiciatis necessitatibus illum hic fuga qui voluptatem exercitationem
+        ab nobis excepturi totam, natus aliquam doloremque repellendus
+        explicabo, alias tenetur doloribus laudantium iure iusto minima! Porro
+        quaerat accusamus facilis nemo mollitia accusantium ab?
+      </p>
+      <div class="img" />
+      <button class="btn-cta" />
+    </div>
+    <div class="grid-element">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+        adipisci placeat, unde velit tempore officiis eius quos pariatur!
+        Perspiciatis necessitatibus illum hic fuga qui voluptatem exercitationem
+        ab nobis excepturi totam, natus aliquam doloremque repellendus
+        explicabo, alias tenetur doloribus laudantium iure iusto minima! Porro
+        quaerat accusamus facilis nemo mollitia accusantium ab?
+      </p>
+      <div class="img" />
+      <button class="btn-cta" />
     </div>
   </div>
 
@@ -185,4 +207,27 @@
   } */
 
   /* this layout is not working, too bad! gonna use a different one l8r */
+  .grid-gallery {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .grid-element {
+    height: 33vh;
+    aspect-ratio: 3/2;
+  }
+
+  .grid-element > p {
+    z-index: 1;
+  }
+
+  .grid-element > .img {
+    z-index: 2;
+    background-image: url("../images/");
+  }
 </style>
