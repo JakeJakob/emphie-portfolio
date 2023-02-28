@@ -2,7 +2,7 @@
 </script>
 
 <main>
-  <div class="container main-page">
+  <div class="container main-page" id="container">
     <nav>
       <ul class="nav-list">
         <li class="nav-element"><a href=".">Home</a></li>
@@ -27,14 +27,15 @@
     <div class="decoration one"><h3>Something about me.</h3></div>
 
     <div class="decoration two" />
-    <div class="content header">
+    <div class="content header" id="image">
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
         temporibus praesentium placeat necessitatibus. Consequuntur dolor nihil
-        iste et repudiandae quasi fugit quia? Enim, nostrum reiciendis?
+        iste et repudiandae quasi fugit quia? Enim, nostrum reiciendis?<button
+          class="btn-cta">Why You should hire <menu /></button
+        >
       </p>
-      <div class="image-container"><img src="" alt="" /></div>
-      <button class="btn-cta">Why You should hire <menu /></button>
+      <div class="image-container"><div class="img" /></div>
     </div>
   </div>
 
@@ -141,14 +142,44 @@
   }
 
   .content.header {
+    background-image: url("C:\Users\Kuba Wlos\Documents\Programming\Emphie_solutions_portfolio_jakeww\Portfolio\images\IMG_1252.jpeg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
     background-color: #393e46;
   }
 
   p {
     width: 400px;
+    font-size: 16px;
+    letter-spacing: 1px;
   }
 
-  .img {
-    background-image: url(./images/);
+  p > button {
+    margin-top: 5rem;
+  }
+
+  /* .image-container {
+    position: absolute;
+    top: calc(100vh + 80px);
+    right: 700px;
+    width: 50%;
+  }
+
+  .image-container > .img {
+    background-image: url("C:\Users\Kuba Wlos\Documents\Programming\Emphie_solutions_portfolio_jakeww\Portfolio\images\IMG_1252.jpeg");
+    width: 150px;
+    background-position: center;
+    background-size: cover;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  } */
+
+  .wrapper {
+    margin: 0 auto;
+    margin-top: 0;
+    justify-content: space-between;
+    display: flex;
+    width: 80%;
   }
 </style>
