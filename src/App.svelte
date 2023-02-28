@@ -2,7 +2,7 @@
 </script>
 
 <main>
-  <div class="container main-page" id="container">
+  <div class="container main-page">
     <nav>
       <ul class="nav-list">
         <li class="nav-element"><a href=".">Home</a></li>
@@ -24,19 +24,16 @@
   <!-- end of main  -->
 
   <div class="container about-me">
-    <div class="decoration one"><h3>Something about me.</h3></div>
-
-    <div class="decoration two" />
-    <div class="content header" id="image">
+    <h3>Something about me.</h3>
+    <div class="content header">
+      <div class="img" />
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
         temporibus praesentium placeat necessitatibus. Consequuntur dolor nihil
-        iste et repudiandae quasi fugit quia? Enim, nostrum reiciendis?<button
-          class="btn-cta">Why You should hire <menu /></button
-        >
+        iste et repudiandae quasi fugit quia? Enim, nostrum reiciendis?
       </p>
-      <div class="image-container"><div class="img" /></div>
     </div>
+    <button class="btn-cta">Why You should hire </button>
   </div>
 
   <!-- end of about-me  -->
@@ -108,7 +105,7 @@
   }
 
   /* main page done  */
-
+  /* 
   .decoration {
     position: absolute;
     border-radius: 50px 0 0 50px;
@@ -117,36 +114,45 @@
 
   .decoration.one {
     z-index: 3;
-    margin-top: 5rem;
+    margin-top: 0rem;
     right: 0;
     background-color: #00adb5;
-    width: calc(50% + 175px);
+    width: calc(50% + 75px); */
 
-    /* for text to apper corectly  */
-    display: flex;
+  /* for text to apper corectly  */
+  /* display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .decoration.two {
     z-index: 2;
-    transform: translateY(calc(115px + 1.5rem));
+    transform: translateY(calc(115px - 3rem));
     right: 0;
     background-color: #007f85;
-    width: calc(50% + 115px);
+    width: calc(50% + 15px);
   }
 
   .decoration > h3 {
     font-size: 48px;
     font-weight: 300;
-  }
+  } */
 
+  .about-me {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 80vh;
+
+    background-color: #222831;
+  }
   .content.header {
-    background-image: url("C:\Users\Kuba Wlos\Documents\Programming\Emphie_solutions_portfolio_jakeww\Portfolio\images\IMG_1252.jpeg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    box-sizing: border-box;
-    background-color: #393e46;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
   }
 
   p {
@@ -155,31 +161,28 @@
     letter-spacing: 1px;
   }
 
-  p > button {
-    margin-top: 5rem;
-  }
-
-  /* .image-container {
-    position: absolute;
-    top: calc(100vh + 80px);
-    right: 700px;
-    width: 50%;
-  }
-
-  .image-container > .img {
+  .content.header > .img {
     background-image: url("C:\Users\Kuba Wlos\Documents\Programming\Emphie_solutions_portfolio_jakeww\Portfolio\images\IMG_1252.jpeg");
-    width: 150px;
-    background-position: center;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     aspect-ratio: 1;
-    border-radius: 50%;
+    width: 40vmin;
+  }
+
+  /* .cover {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.314);
   } */
 
-  .wrapper {
+  /* .wrapper {
     margin: 0 auto;
     margin-top: 0;
     justify-content: space-between;
     display: flex;
     width: 80%;
-  }
+  } */
+
+  /* this layout is not working, too bad! gonna use a different one l8r */
 </style>
