@@ -245,8 +245,6 @@
 
   .grid-element > p {
     box-sizing: border-box;
-    padding: 0.5rem;
-    background-color: #00adb5;
     width: 40vmin;
     position: absolute;
     z-index: 3;
