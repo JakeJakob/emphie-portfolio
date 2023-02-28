@@ -24,16 +24,18 @@
   <!-- end of main  -->
 
   <div class="container about-me">
-    <div class="decoration one" />
+    <div class="decoration one"><h3>Something about me.</h3></div>
+
     <div class="decoration two" />
-    <div class="content header">Who am I?</div>
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
-      temporibus praesentium placeat necessitatibus. Consequuntur dolor nihil
-      iste et repudiandae quasi fugit quia? Enim, nostrum reiciendis?
-    </p>
-    <div class="image-container"><img src="" alt="" /></div>
-    <button class="btn-cta">Why You should hire <menu /></button>
+    <div class="content header">
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+        temporibus praesentium placeat necessitatibus. Consequuntur dolor nihil
+        iste et repudiandae quasi fugit quia? Enim, nostrum reiciendis?
+      </p>
+      <div class="image-container"><img src="" alt="" /></div>
+      <button class="btn-cta">Why You should hire <menu /></button>
+    </div>
   </div>
 
   <!-- end of about-me  -->
@@ -118,6 +120,11 @@
     right: 0;
     background-color: #00adb5;
     width: calc(50% + 175px);
+
+    /* for text to apper corectly  */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .decoration.two {
@@ -126,5 +133,22 @@
     right: 0;
     background-color: #007f85;
     width: calc(50% + 115px);
+  }
+
+  .decoration > h3 {
+    font-size: 48px;
+    font-weight: 300;
+  }
+
+  .content.header {
+    background-color: #393e46;
+  }
+
+  p {
+    width: 400px;
+  }
+
+  .img {
+    background-image: url(./images/);
   }
 </style>
