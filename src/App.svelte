@@ -44,7 +44,7 @@
   <div class="container gallery">
     <div class="grid-container gallery">
       <div class="grid-element">
-        <!-- <div class="cover" /> -->
+        <div class="cover" />
 
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
@@ -229,6 +229,7 @@
   }
 
   .grid-img {
+    position: relative;
     background-image: url("../images/pobrane.jpg");
     background-position: center;
     background-size: cover;
