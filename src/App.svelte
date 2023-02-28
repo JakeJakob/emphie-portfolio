@@ -1,46 +1,53 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
 </script>
 
 <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer"> 
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer"> 
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
+  <nav>
+    <ul class="nav-list">
+      <li class="nav-element"><a href=".">Home</a></li>
+      <li class="nav-element"><a href=".">About</a></li>
+      <li class="nav-element"><a href=".">My Projects</a></li>
+      <li class="nav-element"><a href=".">Contact Me</a></li>
+    </ul>
+  </nav>
+  <div class="container main-page">
+    <h1>Hello!</h1>
+    <h3>I'm Jacob a professional Full Stack Web Developer.</h3>
+    <button class="btn-cta">My Story</button>
   </div>
-  <h1>Vite + Svelte</h1>
 
-  <div class="card">
-    <Counter />
+  <div class="container about-me">
+    <div class="content header">Who am I?</div>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+      temporibus praesentium placeat necessitatibus. Consequuntur dolor nihil
+      iste et repudiandae quasi fugit quia? Enim, nostrum reiciendis?
+    </p>
+    <div class="image-container"><img src="" alt="" /></div>
+    <button class="btn-cta">Why You should hire <menu /></button>
   </div>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
+  <div class="container gallery">
+    <div class="grid-container gallery">
+      <div class="grid-element">
+        <grid-img />
+        <button class="btn-cta grid">See this project</button>
+      </div>
+      <div class="grid-element">
+        <grid-img />
+        <button class="btn-cta grid">See this project</button>
+      </div>
+      <div class="grid-element">
+        <grid-img />
+        <button class="btn-cta grid">See this project.</button>
+      </div>
+    </div>
+  </div>
 
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
+  <div class="container contact-me">
+    <!-- <form action=""></form> Do this form later -->
+  </div>
 </main>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
 </style>
