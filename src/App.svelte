@@ -2,13 +2,13 @@
 </script>
 
 <main>
-  <div class="container main-page">
+  <div class="container main-page" id="main-page">
     <nav>
       <ul class="nav-list">
-        <li class="nav-element"><a href=".">Home</a></li>
-        <li class="nav-element"><a href=".">About</a></li>
-        <li class="nav-element"><a href=".">My Projects</a></li>
-        <li class="nav-element"><a href=".">Contact Me</a></li>
+        <li class="nav-element"><a href="#main-page">Home</a></li>
+        <li class="nav-element"><a href="#about-me">About</a></li>
+        <li class="nav-element"><a href="#gallery">My Projects</a></li>
+        <li class="nav-element"><a href="#contact">Contact Me</a></li>
       </ul>
     </nav>
 
@@ -23,7 +23,7 @@
 
   <!-- end of main  -->
 
-  <div class="container about-me">
+  <div class="container about-me" id="about-me">
     <h3>Something about me.</h3>
     <div class="content header">
       <div class="img" />
@@ -41,8 +41,9 @@
 
   <!-- end of about-me  -->
 
-  <div class="container gallery">
-    <div class="grid-container gallery">
+  <div class="container gallery" id="gallery">
+ <h2>Gallery</h2>
+    <div class="grid-container">
       <div class="grid-element">
         <div class="cover" />
 
@@ -80,7 +81,7 @@
 
   <!-- end of gallery  -->
 
-  <div class="container contact-me">
+  <div class="container contact-me" id="contact">
     <!-- <form action=""></form> Do this form later -->
   </div>
 </main>
@@ -214,6 +215,23 @@
 
   /* this layout is not working, too bad! gonna use a different one l8r */
 
+  .gallery {
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items:  center;
+  }
+
+  .gallery > h2 {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 400;
+  }
+
+
   .grid-container {
     display: flex;
     justify-content: center;
@@ -245,20 +263,24 @@
   }
 
   .grid-element > p {
+    padding: 1rem 0.5rem 0.5rem 1rem;
     box-sizing: border-box;
-    width: 40vmin;
+    width: auto;
     position: absolute;
     z-index: 3;
   }
   .grid-element > .btn-cta {
+    box-shadow: none;
     position: absolute;
+    opacity: 0;
     top: 0;
     width: 400px;
     z-index: 1;
   }
 
   .grid-element:hover > .btn-cta {
-    transform: translateY(calc(400% + 1.5rem));
+    opacity: 1;
+    transform: translateY(calc(400% + 1.4rem));
   }
 
   .grid-element:hover > .grid-img {
