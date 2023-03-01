@@ -1,24 +1,5 @@
 <script>
-  const project_btn = "case study";
-
-const r = document.getElementById
-
-  let fields = { fullname: "" };
-  let errors = { fullname: "" };
-  let valid = false;
-
-  const submitHandler = () => {
-    valid = true;
-    // validate question
-
-    if (fields.fullname.trim().length < 3) {
-      valid = false;
-      errors.fullname = "At least 3 charasters long.";
-    } else {
-      errors.fullname = "";
-    }
-    
-  };
+  const project_btn = "case study"; 
 </script>
 
 <main>
@@ -62,7 +43,7 @@ const r = document.getElementById
   <!-- end of about-me  -->
 
   <div class="container gallery" id="gallery">
-    <h2>Gallery</h2>
+ <h2>Gallery</h2>
     <div class="grid-container">
       <div class="grid-element">
         <div class="cover" />
@@ -102,55 +83,26 @@ const r = document.getElementById
   <!-- end of gallery  -->
 
   <div class="container contact-me" id="contact">
-    <form id="form" action="action_page" method="POST" on:submit|preventDefault={submitHandler}>
-      <label for="fullname">What's your full name:</label>
-      <input
-      bind:value={fields.fullanme}
-        type="fullname"
-        id="fullname"
-        name="fullname"
-        placeholder="e.g. John Wasinski"
-        required
-        minlength="3"
-      />
-      <div class="error">{ errors.fullname }</div>
+    
+    <form action="action_page" method="POST">
+        <label for="fullname">What's your full name:</label>
+        <input type="fullname" id="fullname" name="fullname" placeholder="e.g. John Wasinski" required minlength="3">
 
-      <label for="name">What's Your e-mail:</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="example@something.com"
-        required
-      />
-
-      <label for="name">What are you writing about:</label>
-      <input
-        type="text"
-        id="topic"
-        name="topic"
-        placeholder="Topic of your message..."
-        required
-        minlength="4"
-      />
-
-      <label for="name">Some text</label>
-      <input
-        type="text"
-        id="msg"
-        name="message"
-        placeholder="Type in your message in!"
-        required
-        minlength="10"
-        maxlength="255"
-      />
-
-      <button type="submit" class="btn-cta" value="Send away!">
-        Send Away!</button
-      >
+    
+        <label for="name">What's Your e-mail:</label>
+        <input type="email" id="email" name="email" placeholder="example@something.com" required>
+    
+        <label for="name">What are you writing about:</label>
+        <input type="text" id="topic" name="topic" placeholder="Topic of your message..." required minlength="4">
+    
+        <label for="name">Some text</label>
+        <input type="text" id="msg" name="message" placeholder="Type in your message in!" required minlength="10" maxlength="255">
+    
+      <button type="submit" class="btn-cta" value="Send away!"> Send Away!</button>
     </form>
   </div>
-  <footer>&COPY; 2023 by Jakub Włostowski All Rights Reserved.</footer>
+  <footer>&COPY; 2023 by Jakub Włostowski
+    All Rights Reserved.</footer>
 </main>
 
 <style>
@@ -288,7 +240,7 @@ const r = document.getElementById
     height: 100vh;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
+    align-items:  center;
   }
 
   .gallery > h2 {
@@ -297,6 +249,7 @@ const r = document.getElementById
     font-size: 32px;
     font-weight: 400;
   }
+
 
   .grid-container {
     display: flex;
@@ -348,7 +301,7 @@ const r = document.getElementById
 
   .grid-element:hover > .btn-cta {
     opacity: 1;
-    transform: translateY(calc(400% + 0.7rem));
+    transform: translateY(calc(400% + 1.4rem));
   }
 
   .grid-element:hover > .grid-img {
@@ -367,38 +320,40 @@ const r = document.getElementById
 
   /* form styling */
 
-  .contact-me {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.contact-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-  input {
-    box-sizing: border-box;
-    width: 40vmin;
-    border: none;
-    padding: 16px 8px;
-    color: #eee;
-    font-size: 1rem;
-    width: 400px;
-    background-color: #393e46;
-    box-shadow: 0 2px 0 0 #00adb5;
-  }
+input {
+  box-sizing: border-box;
+  width: 40vmin;
+  border: none;
+  padding: 16px 8px;
+  background-color: #eee;
+  font-size: 1rem;
+  width: 400px; 
+  background-color: #393E46;
+  box-shadow: 0 2px 0 0 #00adb5;
+}
 
-  footer {
-    background-color: rgba(15, 21, 17, 0.4);
-    color: #eee;
-    width: 100%;
-    height: auto;
-    padding: 8px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 8px;
-  }
+footer {
+  background-color: rgba(15, 21, 17, .4);
+  color: #eee;
+  width: 100%;
+  height: auto;
+  padding: 8px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 8px;
+}
+
+
 </style>
