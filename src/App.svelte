@@ -1,4 +1,5 @@
 <script>
+  const project_btn = "case study"; 
 </script>
 
 <main>
@@ -53,7 +54,7 @@
           consequatur harum vitae alias dolor, nobis fuga ratione magni animi...
         </p>
         <div class="grid-img" />
-        <button class="btn-cta grid">See this project</button>
+        <button class="btn-cta grid">{project_btn}</button>
       </div>
       <div class="grid-element">
         <div class="cover" />
@@ -63,7 +64,7 @@
           consequatur harum vitae alias dolor, nobis fuga ratione magni animi...
         </p>
         <div class="grid-img" />
-        <button class="btn-cta grid">See this project</button>
+        <button class="btn-cta grid">{project_btn}</button>
       </div>
       <div class="grid-element">
         <div class="cover" />
@@ -74,7 +75,7 @@
           consequatur harum vitae alias dolor, nobis fuga ratione magni animi...
         </p>
         <div class="grid-img" />
-        <button class="btn-cta grid">See this project.</button>
+        <button class="btn-cta grid">{project_btn}</button>
       </div>
     </div>
   </div>
@@ -100,6 +101,8 @@
       <button type="submit" class="btn-cta" value="Send away!"> Send Away!</button>
     </form>
   </div>
+  <footer>&COPY; 2023 by Jakub Włostowski
+    All Rights Reserved.</footer>
 </main>
 
 <style>
@@ -263,6 +266,7 @@
   }
 
   .grid-img {
+    box-shadow: 0 3px 0 0 #00adb5;
     position: relative;
     background-image: url("../images/pobrane.jpg");
     background-position: center;
@@ -286,6 +290,7 @@
     z-index: 3;
   }
   .grid-element > .btn-cta {
+    text-transform: uppercase;
     box-shadow: none;
     position: absolute;
     opacity: 0;
@@ -335,8 +340,20 @@ input {
   background-color: #eee;
   font-size: 1rem;
   width: 400px; 
+  background-color: #393E46;
+  box-shadow: 0 2px 0 0 #00adb5;
 }
 
+footer {
+  background-color: rgba(15, 21, 17, .4);
+  color: #eee;
+  width: 100%;
+  height: auto;
+  padding: 8px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 8px;
+}
 
 
 </style>
