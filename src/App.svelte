@@ -82,7 +82,23 @@
   <!-- end of gallery  -->
 
   <div class="container contact-me" id="contact">
-    <!-- <form action=""></form> Do this form later -->
+    
+    <form action="action_page" method="POST">
+        <label for="fullname">What's your full name:</label>
+        <input type="fullname" id="fullname" name="fullname" placeholder="e.g. John Wasinski" required minlength="3">
+
+    
+        <label for="name">What's Your e-mail:</label>
+        <input type="email" id="email" name="email" placeholder="example@something.com" required>
+    
+        <label for="name">What are you writing about:</label>
+        <input type="text" id="topic" name="topic" placeholder="Topic of your message..." required minlength="4">
+    
+        <label for="name">Some text</label>
+        <input type="text" id="msg" name="message" placeholder="Type in your message in!" required minlength="10" maxlength="255">
+    
+      <button type="submit" class="btn-cta" value="Send away!"> Send Away!</button>
+    </form>
   </div>
 </main>
 
@@ -296,4 +312,31 @@
     background-color: #00adb5;
     z-index: 2;
   }
+
+  /* form styling */
+
+.contact-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  box-sizing: border-box;
+  width: 40vmin;
+  border: none;
+  padding: 16px 8px;
+  background-color: #eee;
+  font-size: 1rem;
+  width: 400px; 
+}
+
+
+
 </style>
