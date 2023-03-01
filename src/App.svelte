@@ -1,5 +1,27 @@
 <script>
+    import { prevent_default } from "svelte/internal";
+
+
   const project_btn = "case study"; 
+
+
+  const fields = {fullname: ""}
+  const errors = {fullname: ""}
+let valid = false;
+
+const submitHandler = () =>{
+  valid = true;
+
+  // validate one
+  if (fields.fullname.trim().length < 3){
+    valid = false;
+    errors.fullname = 'Must be at least 3 characters long'
+  }
+  else {
+    errors.fullname = '';
+  }
+} 
+
 </script>
 
 <main>
@@ -84,10 +106,10 @@
 
   <div class="container contact-me" id="contact">
     
-    <form action="action_page" method="POST">
+    <form action="action_page.php" method="POST">
         <label for="fullname">What's your full name:</label>
-        <input type="fullname" id="fullname" name="fullname" placeholder="e.g. John Wasinski" required minlength="3">
-
+        <input type="fullname" id="fullname" name="fullname" placeholder="e.g. John Wasinski" bind:value={fields.fullname} on:submit|preventDefault={submitHandler}>
+      <div class="error">{errors.fullname}</div>
     
         <label for="name">What's Your e-mail:</label>
         <input type="email" id="email" name="email" placeholder="example@something.com" required>
@@ -337,7 +359,7 @@ input {
   width: 40vmin;
   border: none;
   padding: 16px 8px;
-  background-color: #eee;
+  color: #eee;
   font-size: 1rem;
   width: 400px; 
   background-color: #393E46;
