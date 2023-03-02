@@ -1,18 +1,30 @@
 <script>
   import { prevent_default } from "svelte/internal";
 
+  // colors
   const project_btn = "case study";
-
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-
+  const error_color = "red";
+  const primary_color = "#00adb5";
+  // other variables
+  const regex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   const fields = { fullname: "", email: "", subject: "", message: "" };
   const errors = { fullname: "", email: "", subject: "", message: "" };
   let valid = false;
-
+  // console.log(Object.keys(fields)[0]);
+  
+  // form validation \/
+  
+function getActiveElementBorder(x) {
+  let object_class_name = Object.keys(fields)[x];
+  const loadbar = document.getElementById(`loadbar-${object_class_name}`);
+  return loadbar;
+}
+  
   const submitHandler = () => {
-    const loadbar = document.getElementById("loadbar");
+    let x = 0;
+    // const loadbar = document.getElementById(`loadbar-${object_class_name}`);
     valid = true;
 
     // validate for name
@@ -20,59 +32,66 @@
     if (fields.fullname.trim().length < 3) {
       valid = false;
       errors.fullname = "Must be at least 3 characters long";
-      loadbar.style.background = "red";
-      loadbar.style.width = "100%";
+      getActiveElementBorder(x).style.background = error_color;
     } else {
       valid = true;
-      loadbar.style.background = "#00adb5";
       errors.fullname = "";
+      getActiveElementBorder(x).style.background = primary_color;
     }
 
     // validate for email
 
-    if (!fields.email.match(re)) {
+    if (!fields.email.match(regex)) {
       valid = false;
       errors.email = "Must enter a valid email";
-     
+      getActiveElementBorder(x+1).style.background = error_color;
     } else {
       valid = true;
       errors.email = "";
+      getActiveElementBorder(x+1).style.background = primary_color;
     }
-
 
     // validate for subject
 
-    if (fields.subject.trim().length < 4 ) {
+    if (fields.subject.trim().length < 4) {
       valid = false;
       errors.subject = "At least 4 characters";
-     
+      getActiveElementBorder(x+2).style.background = error_color;
     } else {
       valid = true;
       errors.subject = "";
+      getActiveElementBorder(x+2).style.background = primary_color;
     }
 
     // validate for message
 
-    if (fields.message.trim().length < 10 || fields.message.trim().length > 255) {
+    if (
+      fields.message.trim().length < 10 ||
+      fields.message.trim().length > 255
+    ) {
       valid = false;
       errors.message = "Must be beetwen 10 and 255 characters";
-     
+      getActiveElementBorder(x+3).style.background = error_color;
     } else {
       valid = true;
       errors.message = "";
+      getActiveElementBorder(x+3).style.background = primary_color;
     }
   };
 
   // here are some active components that do this cool animation while input is focused
   function checkInputFocus() {
-    const elem = document.getElementById("email");
-    const loadbar = document.getElementById("loadbar");
-    if (elem === document.activeElement) {
-      // console.log("element is focused");
-      loadbar.style.width = "100%";
-    } else {
-      loadbar.style.width = "2px";
-    } // console.log(`Element is not focused.`);
+    for (let i = 0; i < 5; i++) {
+      let object_class_name = Object.keys(fields)[i];
+      const elem = document.getElementById(object_class_name);
+      const loadbar = document.getElementById(`loadbar-${object_class_name}`);
+
+      if (elem === document.activeElement) {
+        loadbar.style.width = "100%";
+      } else {
+        loadbar.style.width = "2px";
+      }
+    }
   }
 
   // Check input focus every 300 milliseconds
@@ -159,6 +178,8 @@
 
   <!-- end of gallery  -->
 
+  <!-- form  -->
+
   <div class="container contact-me" id="contact">
     <form
       action="action_page.php"
@@ -173,7 +194,7 @@
         placeholder="e.g. John Wasinski"
         bind:value={fields.fullname}
       />
-      <label for="fullname" id="loadbar" class="loadbar" />
+      <label for="fullname" id="loadbar-fullname" class="loadbar" />
       <div class="error">{errors.fullname}</div>
 
       <label for="email">What's Your e-mail:</label>
@@ -184,6 +205,7 @@
         placeholder="example@something.com"
         bind:value={fields.email}
       />
+      <label for="email" id="loadbar-email" class="loadbar" />
       <div class="error">{errors.email}</div>
 
       <label for="subject">What are you writing about:</label>
@@ -194,6 +216,7 @@
         placeholder="The subject of your message..."
         bind:value={fields.subject}
       />
+      <label for="subject" id="loadbar-subject" class="loadbar" />
       <div class="error">{errors.subject}</div>
 
       <label for="message">Some text</label>
@@ -204,6 +227,7 @@
         placeholder="Type in your message in!"
         bind:value={fields.message}
       />
+      <label for="message" id="loadbar-message" class="loadbar" />
       <div class="error">{errors.message}</div>
 
       <button type="submit" class="btn-cta" value="Send away!">
@@ -463,17 +487,18 @@
     font-size: 8px;
   }
 
-  input:focus {
-    outline: none;
-  }
-
   .loadbar {
     transition: All 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
     background-color: #00adb5;
     width: 2px;
     height: 2px;
-    margin-top: -15px;
+    margin-top: -16px;
   }
+
+  input:focus {
+    outline: none;
+  }
+
 
   .error {
     box-sizing: border-box;
