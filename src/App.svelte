@@ -355,6 +355,7 @@ form {
 }
 
 input {
+  outline: none;
   box-sizing: border-box;
   width: 40vmin;
   border: none;
@@ -363,7 +364,7 @@ input {
   font-size: 1rem;
   width: 400px; 
   background-color: #393E46;
-  box-shadow: 0 2px 0 0 #00adb5;
+  /* box-shadow: 0 2px 0 0 #00adb5; */
 }
 
 footer {
@@ -375,6 +376,10 @@ footer {
   box-sizing: border-box;
   text-align: center;
   font-size: 8px;
+}
+
+input:active {
+  border-bottom: solid 2px #00adb5;
 }
 
 
