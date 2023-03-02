@@ -3,41 +3,79 @@
 
   const project_btn = "case study";
 
-  const fields = { fullname: "" };
-  const errors = { fullname: "" };
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+
+
+  const fields = { fullname: "", email: "", subject: "", message: "" };
+  const errors = { fullname: "", email: "", subject: "", message: "" };
   let valid = false;
 
   const submitHandler = () => {
-    valid = true;
     const loadbar = document.getElementById("loadbar");
-    // validate one
+    valid = true;
+
+    // validate for name
+
     if (fields.fullname.trim().length < 3) {
       valid = false;
       errors.fullname = "Must be at least 3 characters long";
       loadbar.style.background = "red";
-      loadbar.style.width = "100%"
-      // document.getElementById("fullname").style.boxShadow = "0 2px 0 0 red";
+      loadbar.style.width = "100%";
     } else {
-      loadbar.style.background = "#00adb5"
-      // document.getElementById("fullname").style.boxShadow = "0 2px 0 0 #fff";
+      valid = true;
+      loadbar.style.background = "#00adb5";
       errors.fullname = "";
+    }
+
+    // validate for email
+
+    if (!fields.email.match(re)) {
+      valid = false;
+      errors.email = "Must enter a valid email";
+     
+    } else {
+      valid = true;
+      errors.email = "";
+    }
+
+
+    // validate for subject
+
+    if (fields.subject.trim().length < 4 ) {
+      valid = false;
+      errors.subject = "At least 4 characters";
+     
+    } else {
+      valid = true;
+      errors.subject = "";
+    }
+
+    // validate for message
+
+    if (fields.message.trim().length < 10 || fields.message.trim().length > 255) {
+      valid = false;
+      errors.message = "Must be beetwen 10 and 255 characters";
+     
+    } else {
+      valid = true;
+      errors.message = "";
     }
   };
 
   // here are some active components that do this cool animation while input is focused
   function checkInputFocus() {
-    const elem = document.getElementById("fullname");
+    const elem = document.getElementById("email");
     const loadbar = document.getElementById("loadbar");
-
     if (elem === document.activeElement) {
       // console.log("element is focused");
       loadbar.style.width = "100%";
     } else {
-      loadbar.style.width = '2px';
-      // console.log(`Element is not focused.`);
-    }
+      loadbar.style.width = "2px";
+    } // console.log(`Element is not focused.`);
   }
-  // Check page focus every 300 milliseconds
+
+  // Check input focus every 300 milliseconds
   setInterval(checkInputFocus, 300);
 </script>
 
@@ -138,15 +176,36 @@
       <label for="fullname" id="loadbar" class="loadbar" />
       <div class="error">{errors.fullname}</div>
 
-      <!-- <label for="name">What's Your e-mail:</label>
-        <input type="email" id="email" name="email" placeholder="example@something.com" required>
-    
-        <label for="name">What are you writing about:</label>
-        <input type="text" id="topic" name="topic" placeholder="Topic of your message..." required minlength="4">
-    
-        <label for="name">Some text</label>
-       <input type="text" id="msg" name="message" placeholder="Type in your message in!" required minlength="10" maxlength="255">
-    !-->
+      <label for="email">What's Your e-mail:</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        placeholder="example@something.com"
+        bind:value={fields.email}
+      />
+      <div class="error">{errors.email}</div>
+
+      <label for="subject">What are you writing about:</label>
+      <input
+        type="text"
+        id="subject"
+        name="subject"
+        placeholder="The subject of your message..."
+        bind:value={fields.subject}
+      />
+      <div class="error">{errors.subject}</div>
+
+      <label for="message">Some text</label>
+      <input
+        type="text"
+        id="message"
+        name="message"
+        placeholder="Type in your message in!"
+        bind:value={fields.message}
+      />
+      <div class="error">{errors.message}</div>
+
       <button type="submit" class="btn-cta" value="Send away!">
         Send Away!</button
       >
@@ -409,7 +468,7 @@
   }
 
   .loadbar {
-    transition: All .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: All 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
     background-color: #00adb5;
     width: 2px;
     height: 2px;
