@@ -155,40 +155,37 @@
 
   <div class="container gallery" id="gallery">
     <h2>Gallery</h2>
-    <div class="grid-container">
-      <div class="grid-element">
-        <div class="cover" />
-
+    <div class="grid-container" id="grid">
+      <!-- Images of gallery  -->
+      <div class="grid-element-photo" />
+      <div class="grid-element-photo" />
+      <div class="grid-element-photo" />
+      <!-- text  -->
+      <div class="grid-element-card">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-          perspiciatis explicabo minus ipsam ipsum iure blanditiis a temporibus
-          consequatur harum vitae alias dolor, nobis fuga ratione magni animi...
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
+          pariatur, cumque excepturi voluptates dolore commodi magnam possimus
+          ea officia? Repudiandae saepe aliquid accusamus ipsa ex!
         </p>
-        <div class="grid-img" />
-        <button class="btn-cta grid">{project_btn}</button>
       </div>
-      <div class="grid-element">
-        <div class="cover" />
+      <div class="grid-element-card">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-          perspiciatis explicabo minus ipsam ipsum iure blanditiis a temporibus
-          consequatur harum vitae alias dolor, nobis fuga ratione magni animi...
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
+          pariatur, cumque excepturi voluptates dolore commodi magnam possimus
+          ea officia? Repudiandae saepe aliquid accusamus ipsa ex!
         </p>
-        <div class="grid-img" />
-        <button class="btn-cta grid">{project_btn}</button>
       </div>
-      <div class="grid-element">
-        <div class="cover" />
-
+      <div class="grid-element-card">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-          perspiciatis explicabo minus ipsam ipsum iure blanditiis a temporibus
-          consequatur harum vitae alias dolor, nobis fuga ratione magni animi...
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
+          pariatur, cumque excepturi voluptates dolore commodi magnam possimus
+          ea officia? Repudiandae saepe aliquid accusamus ipsa ex!
         </p>
-        <div class="grid-img" />
-        <button class="btn-cta grid">{project_btn}</button>
       </div>
-      <div class="e"/>
+      <button>a</button>
+      <button>b</button>
+      <button>c</button>
+      <div class="e" />
       <div class="container-of-cta">
         <button>Contact ME</button>
         <a>Expand gallery</a>
@@ -445,34 +442,41 @@
   }
 
   .grid-container {
+    padding-bottom: 5rem;
     display: grid;
     grid-template-columns: repeat(3, auto);
-    grid-template-rows: auto 2fr;
-    height: 100vh;
-    max-width: 100vw;
-    column-gap: 3rem;
-    row-gap: 6rem;
-    width: 100%;
+    grid-template-rows: 1fr 1fr auto;
     justify-content: center;
-    flex-wrap: wrap;
+
+    column-gap: 2rem;
+    /* row-gap: 4rem; */
+
+    width: 100%;
     border-bottom: 1px #eee solid;
   }
 
-  .grid-img {
+  .grid-element-card {
+    background-color: #393e4640;
+    padding: 1em;
+    border: 1px solid #393e462b;
+    border-radius: 10px;
+    /* transform: translate(0, 100%); */
+    transition: all 0.8s linear;
+  }
+
+
+
+  .grid-element-photo {
     box-shadow: 0 3px 0 0 #00adb5;
-    position: relative;
     background-image: url("../images/pobrane.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 400px;
+
+    transform: translateY(100%);
     z-index: 4;
     aspect-ratio: 3/2;
-
     transition: all 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  }
-  .grid-element {
-    position: relative;
   }
 
   .container-of-cta {
@@ -485,42 +489,6 @@
   .container-of-cta > a {
     color: #393e46;
     text-transform: uppercase;
-  }
-
-  .grid-element > p {
-    padding: 1rem 0.5rem 0.5rem 1rem;
-    box-sizing: border-box;
-    width: auto;
-    position: absolute;
-    z-index: 3;
-  }
-  .grid-element > .btn-cta {
-    text-transform: uppercase;
-    box-shadow: none;
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    width: 400px;
-    z-index: 1;
-  }
-
-  .grid-element:hover > .btn-cta {
-    opacity: 1;
-    transform: translateY(calc(400% + 1.4rem));
-  }
-
-  .grid-element:hover > .grid-img {
-    transform: translateY(-100%);
-  }
-
-  .grid-element > .cover {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #00adb5;
-    z-index: 2;
   }
 
   /* form styling */
