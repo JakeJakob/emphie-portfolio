@@ -132,9 +132,8 @@
 
   <!-- about-me section  -->
   <div class="return-link"><a href="#top">go to the top.</a></div>
-  
+
   <div class="container about-me" id="about-me">
-    
     <div class="content-aboutme">
       <h3>Something about me.</h3>
       <div class="content header">
@@ -188,6 +187,11 @@
         </p>
         <div class="grid-img" />
         <button class="btn-cta grid">{project_btn}</button>
+      </div>
+      <div class="e"/>
+      <div class="container-of-cta">
+        <button>Contact ME</button>
+        <a>Expand gallery</a>
       </div>
     </div>
   </div>
@@ -362,18 +366,24 @@
     height: 100vh;
     background-color: #222831;
   }
-.content-aboutme { 
-  width: 69%;
-  margin: 0 auto;
-  box-sizing: border-box;
+  .content-aboutme {
+    width: 69%;
+    margin: 0 auto;
+    box-sizing: border-box;
 
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 1fr 2fr;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 0.5fr;
+  }
 
-}
+  .content-aboutme > h3 {
+    display: flex;
+    text-align: center;
+    justify-self: center;
+  }
 
   .content.header {
+    margin: 2rem 0 3rem 0;
     padding: 0;
     display: flex;
     align-items: center;
@@ -435,9 +445,9 @@
   }
 
   .grid-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: auto 2fr;
     height: 100vh;
     max-width: 100vw;
     column-gap: 3rem;
@@ -463,6 +473,18 @@
   }
   .grid-element {
     position: relative;
+  }
+
+  .container-of-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .container-of-cta > a {
+    color: #393e46;
+    text-transform: uppercase;
   }
 
   .grid-element > p {
