@@ -41,7 +41,6 @@ h1 {
 }
 
 h3 {
-
   font-size: 24px;
   font-weight: 400;
 }
@@ -61,7 +60,6 @@ button {
   font-size: 1rem;
   padding: 16px 40px;
   border: solid 3px var(--accent);
-
   background-color: transparent;
   color: var(--accent);
   transition: all .1s linear;
@@ -72,5 +70,5 @@ button {
 button:hover {
   background-color: var(--accent);
   color: #eee;
-  box-shadow: 0 0 20px 0 var(--second-accent);
+  box-shadow: 0 0 10px 0 var(--second-accent);
 }

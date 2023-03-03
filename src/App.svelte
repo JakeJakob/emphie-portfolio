@@ -1,30 +1,114 @@
 <script>
-    import { prevent_default } from "svelte/internal";
+  import { prevent_default } from "svelte/internal";
 
+  // colors
+  const project_btn = "case study";
+  const error_color = "red";
+  const primary_color = "#00adb5";
 
-  const project_btn = "case study"; 
+  // event listeners
 
-
-  const fields = {fullname: ""}
-  const errors = {fullname: ""}
-let valid = false;
-
-const submitHandler = () =>{
-  valid = true;
-
-  // validate one
-  if (fields.fullname.trim().length < 3){
-    valid = false;
-    errors.fullname = 'Must be at least 3 characters long'
+  function myFunction() {
+    element.style.transform = "rotate(360deg)";
   }
-  else {
-    errors.fullname = '';
-  }
-} 
+  const element = document.getElementById("img");
 
+  // other variables
+  const regex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  const fields = { fullname: "", email: "", subject: "", message: "" };
+  const errors = { fullname: "", email: "", subject: "", message: "" };
+  let valid = false;
+  // console.log(Object.keys(fields)[0]);
+
+  // form validation \/
+
+  function getActiveElementBorder(x) {
+    let object_class_name = Object.keys(fields)[x];
+    const loadbar = document.getElementById(`loadbar-${object_class_name}`);
+    return loadbar;
+  }
+
+  const submitHandler = () => {
+    let x = 0;
+    // const loadbar = document.getElementById(`loadbar-${object_class_name}`);
+    valid = true;
+
+    // validate for name
+
+    if (fields.fullname.trim().length < 3) {
+      valid = false;
+      errors.fullname = "Must be at least 3 characters long";
+      getActiveElementBorder(x).style.background = error_color;
+    } else {
+      valid = true;
+      errors.fullname = "";
+      getActiveElementBorder(x).style.background = primary_color;
+    }
+
+    // validate for email
+
+    if (!fields.email.match(regex)) {
+      valid = false;
+      errors.email = "Must enter a valid email";
+      getActiveElementBorder(x + 1).style.background = error_color;
+    } else {
+      valid = true;
+      errors.email = "";
+      getActiveElementBorder(x + 1).style.background = primary_color;
+    }
+
+    // validate for subject
+
+    if (fields.subject.trim().length < 4) {
+      valid = false;
+      errors.subject = "At least 4 characters";
+      getActiveElementBorder(x + 2).style.background = error_color;
+    } else {
+      valid = true;
+      errors.subject = "";
+      getActiveElementBorder(x + 2).style.background = primary_color;
+    }
+
+    // validate for message
+
+    if (
+      fields.message.trim().length < 10 ||
+      fields.message.trim().length > 255
+    ) {
+      valid = false;
+      errors.message = "Must be beetwen 10 and 255 characters";
+      getActiveElementBorder(x + 3).style.background = error_color;
+    } else {
+      valid = true;
+      errors.message = "";
+      getActiveElementBorder(x + 3).style.background = primary_color;
+    }
+  };
+
+  // here are some active components that do this cool animation while input is focused
+  function checkInputFocus() {
+    for (let i = 0; i < 5; i++) {
+      let object_class_name = Object.keys(fields)[i];
+      const elem = document.getElementById(object_class_name);
+      const loadbar = document.getElementById(`loadbar-${object_class_name}`);
+
+      if (elem === document.activeElement) {
+        loadbar.style.width = "100%";
+      } else {
+        loadbar.style.width = "2px";
+      }
+    }
+  }
+
+  // Check input focus every 300 milliseconds
+  setInterval(checkInputFocus, 300);
 </script>
 
 <main>
+  <!-- main-page -->
+  <div class="sticky-obj" />
   <div class="container main-page" id="main-page">
     <nav>
       <ul class="nav-list">
@@ -46,26 +130,32 @@ const submitHandler = () =>{
 
   <!-- end of main  -->
 
+  <!-- about-me section  -->
+  <div class="return-link"><a href="#top">go to the top.</a></div>
+  
   <div class="container about-me" id="about-me">
-    <h3>Something about me.</h3>
-    <div class="content header">
-      <div class="img" />
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis sit
-        illum sed, enim recusandae earum dignissimos dolor, tempora, aliquid
-        neque repellendus! Rem omnis quisquam ab dolore quam. Animi voluptatum
-        neque fugit quae ullam magni molestiae illum facere eligendi autem
-        officiis dolorem reprehenderit, eos tempore ipsum a quo voluptatem
-        quaerat voluptates.
-      </p>
+    
+    <div class="content-aboutme">
+      <h3>Something about me.</h3>
+      <div class="content header">
+        <div class="img" id="img" />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis sit
+          illum sed, enim recusandae earum dignissimos dolor, tempora, aliquid
+          neque repellendus! Rem omnis quisquam ab dolore quam. Animi voluptatum
+          neque fugit quae ullam magni molestiae illum facere eligendi autem
+          officiis dolorem reprehenderit, eos tempore ipsum a quo voluptatem
+          quaerat voluptates.
+        </p>
+      </div>
+      <button class="btn-cta">Why You should hire </button>
     </div>
-    <button class="btn-cta">Why You should hire </button>
   </div>
 
   <!-- end of about-me  -->
 
   <div class="container gallery" id="gallery">
- <h2>Gallery</h2>
+    <h2>Gallery</h2>
     <div class="grid-container">
       <div class="grid-element">
         <div class="cover" />
@@ -104,27 +194,64 @@ const submitHandler = () =>{
 
   <!-- end of gallery  -->
 
+  <!-- form  -->
+
   <div class="container contact-me" id="contact">
-    
-    <form action="action_page.php" method="POST">
-        <label for="fullname">What's your full name:</label>
-        <input type="fullname" id="fullname" name="fullname" placeholder="e.g. John Wasinski" bind:value={fields.fullname} on:submit|preventDefault={submitHandler}>
+    <form
+      action="action_page.php"
+      method="POST"
+      on:submit|preventDefault={submitHandler}
+    >
+      <label for="fullname">What's your full name:</label>
+      <input
+        type="text"
+        id="fullname"
+        name="fullname"
+        placeholder="e.g. John Wasinski"
+        bind:value={fields.fullname}
+      />
+      <label for="fullname" id="loadbar-fullname" class="loadbar" />
       <div class="error">{errors.fullname}</div>
-    
-        <label for="name">What's Your e-mail:</label>
-        <input type="email" id="email" name="email" placeholder="example@something.com" required>
-    
-        <label for="name">What are you writing about:</label>
-        <input type="text" id="topic" name="topic" placeholder="Topic of your message..." required minlength="4">
-    
-        <label for="name">Some text</label>
-        <input type="text" id="msg" name="message" placeholder="Type in your message in!" required minlength="10" maxlength="255">
-    
-      <button type="submit" class="btn-cta" value="Send away!"> Send Away!</button>
+
+      <label for="email">What's Your e-mail:</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        placeholder="example@something.com"
+        bind:value={fields.email}
+      />
+      <label for="email" id="loadbar-email" class="loadbar" />
+      <div class="error">{errors.email}</div>
+
+      <label for="subject">What are you writing about:</label>
+      <input
+        type="text"
+        id="subject"
+        name="subject"
+        placeholder="The subject of your message..."
+        bind:value={fields.subject}
+      />
+      <label for="subject" id="loadbar-subject" class="loadbar" />
+      <div class="error">{errors.subject}</div>
+
+      <label for="message">Some text</label>
+      <input
+        type="text"
+        id="message"
+        name="message"
+        placeholder="Type in your message in!"
+        bind:value={fields.message}
+      />
+      <label for="message" id="loadbar-message" class="loadbar" />
+      <div class="error">{errors.message}</div>
+
+      <button type="submit" class="btn-cta" value="Send away!">
+        Send Away!</button
+      >
     </form>
   </div>
-  <footer>&COPY; 2023 by Jakub Włostowski
-    All Rights Reserved.</footer>
+  <footer>&COPY; 2023 by Jakub Włostowski All Rights Reserved.</footer>
 </main>
 
 <style>
@@ -133,8 +260,9 @@ const submitHandler = () =>{
     display: flex;
     justify-content: space-between;
   }
+
   nav {
-    width: 55px;
+    width: 2rem;
   }
   .nav-list {
     width: 100%;
@@ -143,9 +271,9 @@ const submitHandler = () =>{
     align-items: center;
     flex-direction: column;
     margin-top: 1rem;
-    padding: 0;
     gap: 4rem;
   }
+
   .nav-element {
     list-style: disc;
     list-style-position: outside;
@@ -159,6 +287,30 @@ const submitHandler = () =>{
     list-style: none;
   }
 
+  .return-link {
+    top: 0;
+    left: 0;
+    position: sticky;
+    writing-mode: vertical-lr;
+    rotate: 180deg;
+    padding-bottom: 1.5rem;
+  }
+
+  .return-link > a {
+    color: #393e46;
+  }
+
+  .return-link > a:hover {
+    cursor: pointer;
+    color: #eee;
+  }
+
+  .sticky-obj {
+    position: fixed;
+    width: 10vw;
+    height: 1px;
+  }
+
   /* end of nav styling (for now) */
 
   .content {
@@ -170,7 +322,8 @@ const submitHandler = () =>{
     margin-bottom: 2rem;
   }
 
-  /* main page done  */
+  /* main page end  */
+
   /* 
   .decoration {
     position: absolute;
@@ -206,20 +359,27 @@ const submitHandler = () =>{
 
   .about-me {
     border-bottom: solid 1px #eee;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
     height: 100vh;
-
     background-color: #222831;
   }
+.content-aboutme { 
+  width: 69%;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr;
+
+}
+
   .content.header {
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
+    box-sizing: border-box;
   }
 
   p {
@@ -238,6 +398,8 @@ const submitHandler = () =>{
     background-repeat: no-repeat;
     aspect-ratio: 1;
     width: 40vmin;
+
+    transition: All 5s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 
   /* .cover {
@@ -262,7 +424,7 @@ const submitHandler = () =>{
     height: 100vh;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items:  center;
+    align-items: center;
   }
 
   .gallery > h2 {
@@ -271,7 +433,6 @@ const submitHandler = () =>{
     font-size: 32px;
     font-weight: 400;
   }
-
 
   .grid-container {
     display: flex;
@@ -342,45 +503,58 @@ const submitHandler = () =>{
 
   /* form styling */
 
-.contact-me {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .contact-me {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-input {
-  outline: none;
-  box-sizing: border-box;
-  width: 40vmin;
-  border: none;
-  padding: 16px 8px;
-  color: #eee;
-  font-size: 1rem;
-  width: 400px; 
-  background-color: #393E46;
-  /* box-shadow: 0 2px 0 0 #00adb5; */
-}
+  input {
+    box-sizing: border-box;
+    width: 40vmin;
+    border: none;
+    padding: 16px 8px;
+    color: #eee;
+    font-size: 1rem;
+    width: 400px;
+    background-color: #393e46;
+    /* box-shadow: 0 2px 0 0 #00adb5; */
+  }
 
-footer {
-  background-color: rgba(15, 21, 17, .4);
-  color: #eee;
-  width: 100%;
-  height: auto;
-  padding: 8px;
-  box-sizing: border-box;
-  text-align: center;
-  font-size: 8px;
-}
+  footer {
+    background-color: rgba(15, 21, 17, 0.4);
+    color: #eee;
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 8px;
+  }
 
-input:active {
-  border-bottom: solid 2px #00adb5;
-}
+  .loadbar {
+    transition: All 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+    background-color: #00adb5;
+    width: 2px;
+    height: 2px;
+    margin-top: -16px;
+  }
 
+  input:focus {
+    outline: none;
+  }
 
+  .error {
+    box-sizing: border-box;
+    font-size: 8px;
+    font-weight: bold;
+    color: red;
+    margin-left: 5px;
+  }
 </style>
