@@ -20,6 +20,8 @@
   const fields = { fullname: "", email: "", subject: "", message: "" };
   const errors = { fullname: "", email: "", subject: "", message: "" };
   let valid = false;
+  let lorem25 =
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, consequuntur aspernatur in ipsum nostrum assumenda laborum repellat delectus, nobis dolorem, minima nisi natus. Deleniti laborum sequi, odit adipisci error unde eius provident. Nemo commodi quibusdam autem ut quo qui, quaerat praesentium. Nesciunt quidem tempore, iure possimus corporis ipsa voluptates harum.";
   // console.log(Object.keys(fields)[0]);
 
   // form validation \/
@@ -134,63 +136,48 @@
   <div class="return-link"><a href="#top">go to the top.</a></div>
 
   <div class="container about-me" id="about-me">
+    <h3>Something about me.</h3>
     <div class="content-aboutme">
-      <h3>Something about me.</h3>
-      <div class="content header">
-        <div class="img" id="img" />
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis sit
-          illum sed, enim recusandae earum dignissimos dolor, tempora, aliquid
-          neque repellendus! Rem omnis quisquam ab dolore quam. Animi voluptatum
-          neque fugit quae ullam magni molestiae illum facere eligendi autem
-          officiis dolorem reprehenderit, eos tempore ipsum a quo voluptatem
-          quaerat voluptates.
-        </p>
-      </div>
-      <button class="btn-cta">Why You should hire </button>
+      <div class="img" id="img" />
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis sit
+        illum sed, enim recusandae earum dignissimos dolor, tempora, aliquid
+        neque repellendus! Rem omnis quisquam ab dolore quam. Animi voluptatum
+        neque fugit quae ullam magni molestiae illum facere eligendi autem
+        officiis dolorem reprehenderit, eos tempore ipsum a quo voluptatem
+        quaerat voluptates.
+      </p>
     </div>
+    <button class="btn-cta">Why You should hire me</button>
   </div>
 
   <!-- end of about-me  -->
 
+  <!-- gallery section proejcts -->
+
   <div class="container gallery" id="gallery">
-    <h2>Gallery</h2>
+    <h3>Gallery</h3><div class="container_cta">
+    <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. A placeat nam id, mollitia voluptas, porro aliquid officia error officiis consequuntur hic nobis dolor accusamus obcaecati.
+    </p>
+    
+      <button>Contact ME</button>
+</div>
+      
+ 
+    
     <div class="grid-container" id="grid">
-      <!-- Images of gallery  -->
-      <div class="grid-element-photo" />
-      <div class="grid-element-photo" />
-      <div class="grid-element-photo" />
-      <!-- text  -->
-      <div class="grid-element-card">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-          pariatur, cumque excepturi voluptates dolore commodi magnam possimus
-          ea officia? Repudiandae saepe aliquid accusamus ipsa ex!
-        </p>
+      <div class="element_one">
+        <div class="image" id="1"/>
+        <div class="image" />
+        <div class="image" />
+        <div class="image" />
+        <button>{project_btn}</button>
+        <button>{project_btn}</button>
+        <button>{project_btn}</button>
+        <button>{project_btn}</button>
       </div>
-      <div class="grid-element-card">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-          pariatur, cumque excepturi voluptates dolore commodi magnam possimus
-          ea officia? Repudiandae saepe aliquid accusamus ipsa ex!
-        </p>
-      </div>
-      <div class="grid-element-card">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-          pariatur, cumque excepturi voluptates dolore commodi magnam possimus
-          ea officia? Repudiandae saepe aliquid accusamus ipsa ex!
-        </p>
-      </div>
-      <button>a</button>
-      <button>b</button>
-      <button>c</button>
-      <div class="e" />
-      <div class="container-of-cta">
-        <button>Contact ME</button>
-        <a>Expand gallery</a>
-      </div>
-    </div>
+    </div><a href="/">Expand gallery</a>
   </div>
 
   <!-- end of gallery  -->
@@ -256,8 +243,9 @@
 </main>
 
 <style>
+  /* navigation and main page components  */
+
   .main-page {
-    border-bottom: solid 1px #eee;
     display: flex;
     justify-content: space-between;
   }
@@ -265,6 +253,7 @@
   nav {
     width: 2rem;
   }
+
   .nav-list {
     width: 100%;
     height: 100%;
@@ -312,7 +301,7 @@
     height: 1px;
   }
 
-  /* end of nav styling (for now) */
+  /* end of navigation */
 
   .content {
     padding: 5rem;
@@ -323,81 +312,38 @@
     margin-bottom: 2rem;
   }
 
-  /* main page end  */
+  /* end of main-page */
 
-  /* 
-  .decoration {
-    position: absolute;
-    border-radius: 50px 0 0 50px;
-    height: 115px;
+  /* about-me section */
+
+  .about-me {
+    padding-top: 5em;
+    display: flex;
+    flex-direction: column;
   }
 
-  .decoration.one {
-    z-index: 3;
-    margin-top: 0rem;
-    right: 0;
-    background-color: #00adb5;
-    width: calc(50% + 75px); */
-
-  /* for text to apper corectly  */
-  /* display: flex;
-    align-items: center;
+  .content-aboutme {
+    display: flex;
     justify-content: center;
   }
 
-  .decoration.two {
-    z-index: 2;
-    transform: translateY(calc(115px - 3rem));
-    right: 0;
-    background-color: #007f85;
-    width: calc(50% + 15px);
-  }
-
-  .decoration > h3 {
-    font-size: 48px;
-    font-weight: 300;
-  } */
-
-  .about-me {
-    border-bottom: solid 1px #eee;
-    height: 100vh;
-    background-color: #222831;
-  }
-  .content-aboutme {
-    width: 69%;
-    margin: 0 auto;
-    box-sizing: border-box;
-
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 3fr 0.5fr;
-  }
-
-  .content-aboutme > h3 {
-    display: flex;
-    text-align: center;
-    justify-self: center;
-  }
-
-  .content.header {
-    margin: 2rem 0 3rem 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    box-sizing: border-box;
+  .about-me > h3 {
+    color: #00adb5;
+    font-size: 42px;
+    margin-bottom: 3rem;
+    margin-left: 5rem;
   }
 
   p {
     width: 400px;
     font-size: 16px;
     letter-spacing: 1px;
+    padding: 1rem;
   }
 
-  .content.header > .img {
+  .content-aboutme > .img {
     border: solid #00adb5;
-    border-width: 1px 0 0 1px;
+    border-width: 3px 0 0 3px;
 
     background-image: url("C:\Users\Kuba Wlos\Documents\Programming\Emphie_solutions_portfolio_jakeww\Portfolio\images\IMG_1252.jpeg");
     background-size: cover;
@@ -405,95 +351,83 @@
     background-repeat: no-repeat;
     aspect-ratio: 1;
     width: 40vmin;
-
-    transition: All 5s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 
-  /* .cover {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.314);
-  } */
+  .about-me > button {
+    width: fit-content;
+    align-self: center;
+    margin-top: 3rem;
+  }
 
-  /* .wrapper {
-    margin: 0 auto;
-    margin-top: 0;
-    justify-content: space-between;
-    display: flex;
-    width: 80%;
-  } */
+  /* end of about-me section  */
 
-  /* this layout is not working, too bad! gonna use a different one l8r */
+  /* gallery and projects section  */
 
   .gallery {
-    width: 100%;
-    display: flex;
+    /* display: flex; */
     height: 100vh;
+    /* display: flex; */
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    /* align-items: center; */
+    justify-content: space-around;
   }
 
-  .gallery > h2 {
-    margin-top: 40px;
-    text-align: center;
-    font-size: 32px;
-    font-weight: 400;
+  .gallery > h3 {
+    color: #00adb5;
+    font-size: 42px;
+    margin-left: 5rem;
   }
-
+.container_cta {
+  display: flex;
+  align-items: center;
+  padding-left: 5rem;
+  margin-bottom: 2rem;
+}
   .grid-container {
-    padding-bottom: 5rem;
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: 1fr 1fr auto;
-    justify-content: center;
-
-    column-gap: 2rem;
-    /* row-gap: 4rem; */
-
     width: 100%;
-    border-bottom: 1px #eee solid;
+    height: auto;
+    display: flex;
+    justify-content: center;
   }
 
-  .grid-element-card {
-    background-color: #393e4640;
-    padding: 1em;
-    border: 1px solid #393e462b;
-    border-radius: 10px;
-    /* transform: translate(0, 100%); */
-    transition: all 0.8s linear;
+  .element_one {
+    width: 80%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    grid-template-rows: 1fr;
+    grid-gap: 10px;
   }
 
-
-
-  .grid-element-photo {
-    box-shadow: 0 3px 0 0 #00adb5;
+  .element_one > .image {
     background-image: url("../images/pobrane.jpg");
-    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-
-    transform: translateY(100%);
-    z-index: 4;
-    aspect-ratio: 3/2;
-    transition: all 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    width: 100%;
+    aspect-ratio: 1;
+    transition: all .1s linear;
+  }
+  .element_one > .image:hover {
+   transform:scale(1.1);
+   cursor: pointer;
   }
 
-  .container-of-cta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
+
+
+  .element_one > button {
+    
+    background-color: #393e46;
+    border: 1px solid;
+    box-shadow: none;
+
   }
 
-  .container-of-cta > a {
-    color: #393e46;
-    text-transform: uppercase;
-  }
+  /* end of gallery  */
 
   /* form styling */
 
   .contact-me {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
