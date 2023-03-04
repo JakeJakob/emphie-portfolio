@@ -8,14 +8,8 @@
 
   // event listeners
 
-  function myFunction() {
-    element.style.transform = "rotate(360deg)";
-  }
-  const element = document.getElementById("img");
-
   // other variables
-  const regex =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  // const regex = /^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-add$/; why the fuc it stopped working randomly, -> regesx should close with / double // "^[(*,|)]"
 
   const fields = { fullname: "", email: "", subject: "", message: "" };
   const errors = { fullname: "", email: "", subject: "", message: "" };
@@ -23,6 +17,28 @@
   let lorem25 =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, consequuntur aspernatur in ipsum nostrum assumenda laborum repellat delectus, nobis dolorem, minima nisi natus. Deleniti laborum sequi, odit adipisci error unde eius provident. Nemo commodi quibusdam autem ut quo qui, quaerat praesentium. Nesciunt quidem tempore, iure possimus corporis ipsa voluptates harum.";
   // console.log(Object.keys(fields)[0]);
+
+  window.onload = function () {
+    const full = document.getElementById("full-image");
+    const overlay = document.getElementById("overlay");
+    overlay.addEventListener("click", (e) => {
+      overlay.style.width = "0";
+      full.style.zIndex = "-1";
+      full.style.opacity = "0";
+    });
+    const buttons = document.querySelectorAll(".image");
+    console.log(buttons);
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        overlay.style.width = "100%";
+        overlay.style.height = "100%";
+        overlay.style.opacity = "0.7";
+        overlay.style.zIndex = "100";
+        full.style.zIndex = "999";
+        full.style.opacity = "1";
+      });
+    });
+  };
 
   // form validation \/
 
@@ -111,6 +127,7 @@
 <main>
   <!-- main-page -->
   <div class="sticky-obj" />
+  <div class="big-overlay" id="overlay" />
   <div class="container main-page" id="main-page">
     <nav>
       <ul class="nav-list">
@@ -156,28 +173,35 @@
   <!-- gallery section proejcts -->
 
   <div class="container gallery" id="gallery">
-    <h3>Gallery</h3><div class="container_cta">
-    <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. A placeat nam id, mollitia voluptas, porro aliquid officia error officiis consequuntur hic nobis dolor accusamus obcaecati.
-    </p>
-    
+    <div class="full-image view" id="full-image" />
+    <h3>Gallery</h3>
+    <div class="container_cta">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A placeat nam
+        id, mollitia voluptas, porro aliquid officia error officiis consequuntur
+        hic nobis dolor accusamus obcaecati.
+      </p>
+
       <button>Contact ME</button>
-</div>
-      
- 
-    
+    </div>
+
     <div class="grid-container" id="grid">
       <div class="element_one">
-        <div class="image" id="1"/>
+        <div class="image" id="image" />
+        <div class="image" id="image" />
         <div class="image" />
-        <div class="image" />
-        <div class="image" />
-        <button>{project_btn}</button>
+        <div class="image">s</div>
+        <button
+          on:click={() =>
+            (document.getElementById("image").style.opacity = "0")}
+          >{project_btn}</button
+        >
         <button>{project_btn}</button>
         <button>{project_btn}</button>
         <button>{project_btn}</button>
       </div>
-    </div><a href="/">Expand gallery</a>
+    </div>
+    <a href="/">Expand gallery</a>
   </div>
 
   <!-- end of gallery  -->
@@ -245,6 +269,17 @@
 <style>
   /* navigation and main page components  */
 
+  .big-overlay {
+    position: fixed;
+    background: url("../images/overlay.png") repeat 0 0;
+    opacity: 0;
+    z-index: 0;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+    transition: opacity 1s linear;
+  }
+
   .main-page {
     display: flex;
     justify-content: space-between;
@@ -278,6 +313,7 @@
   }
 
   .return-link {
+    z-index: 999;
     top: 0;
     left: 0;
     position: sticky;
@@ -363,6 +399,26 @@
 
   /* gallery and projects section  */
 
+  .full-image {
+    background-image: url(../images/pobrane.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    transition: All .3s linear;
+  }
+
+  .gallery {
+    position: relative;
+  }
+
   .gallery {
     /* display: flex; */
     height: 100vh;
@@ -377,12 +433,12 @@
     font-size: 42px;
     margin-left: 5rem;
   }
-.container_cta {
-  display: flex;
-  align-items: center;
-  padding-left: 5rem;
-  margin-bottom: 2rem;
-}
+  .container_cta {
+    display: flex;
+    align-items: center;
+    padding-left: 5rem;
+    margin-bottom: 2rem;
+  }
   .grid-container {
     width: 100%;
     height: auto;
@@ -405,21 +461,17 @@
     background-repeat: no-repeat;
     width: 100%;
     aspect-ratio: 1;
-    transition: all .1s linear;
+    transition: all 0.1s linear;
   }
   .element_one > .image:hover {
-   transform:scale(1.1);
-   cursor: pointer;
+    transform: scale(1.1);
+    cursor: pointer;
   }
 
-
-
   .element_one > button {
-    
     background-color: #393e46;
     border: 1px solid;
     box-shadow: none;
-
   }
 
   /* end of gallery  */
