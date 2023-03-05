@@ -1,23 +1,27 @@
 <script>
+  // @ts-nocheck
+
   import { prevent_default } from "svelte/internal";
 
   // colors
   const project_btn = "case study";
   const error_color = "red";
   const primary_color = "#00adb5";
+  document.body.onpointermove = (event) => {
+    // TODO -> add mouse tracker in js; media query and i think its finished
+    const square = document.getElementById("mouse-tracer");
+    const { clientX, clientY } = event;
+    square.animate(
+      {
+        left: `${clientX}px`,
+        top: `${clientY}px`,
+      },
+      { duration: 2000, fill: "forwards" }
+    );
+  };
 
-  // event listeners
-
-  // other variables
-  // const regex = /^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-add$/; why the fuc it stopped working randomly, -> regesx should close with / double // "^[(*,|)]"
-
-  const fields = { fullname: "", email: "", subject: "", message: "" };
-  const errors = { fullname: "", email: "", subject: "", message: "" };
-  let valid = false;
-  let lorem25 =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, consequuntur aspernatur in ipsum nostrum assumenda laborum repellat delectus, nobis dolorem, minima nisi natus. Deleniti laborum sequi, odit adipisci error unde eius provident. Nemo commodi quibusdam autem ut quo qui, quaerat praesentium. Nesciunt quidem tempore, iure possimus corporis ipsa voluptates harum.";
-  // console.log(Object.keys(fields)[0]);
-
+  // mouse tracer, getting mouse position sending pos to #mouse-tracer
+  // event listeners, listeting for click on images to resize and on overlay
   window.onload = function () {
     const full = document.getElementById("full-image");
     const overlay = document.getElementById("overlay");
@@ -26,10 +30,10 @@
       full.style.zIndex = "-1";
       full.style.opacity = "0";
     });
-    const buttons = document.querySelectorAll(".image");
-    console.log(buttons);
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
+    const images = document.querySelectorAll(".image");
+    // console.log(images);
+    images.forEach((img) => {
+      img.addEventListener("click", () => {
         overlay.style.width = "100%";
         overlay.style.height = "100%";
         overlay.style.opacity = "0.7";
@@ -39,6 +43,19 @@
       });
     });
   };
+
+  // variables requaired for form validation (regex for email, fields and error for storing data entered by user and displaying errors)
+  const regex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  const fields = { fullname: "", email: "", subject: "", message: "" };
+  const errors = { fullname: "", email: "", subject: "", message: "" };
+  let valid = false;
+
+  // other variables
+  let lorem25 =
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, consequuntur aspernatur in ipsum nostrum assumenda laborum repellat delectus, nobis dolorem, minima nisi natus. Deleniti laborum sequi, odit adipisci error unde eius provident. Nemo commodi quibusdam autem ut quo qui, quaerat praesentium. Nesciunt quidem tempore, iure possimus corporis ipsa voluptates harum.";
+  // console.log(Object.keys(fields)[0]);
 
   // form validation \/
 
@@ -107,15 +124,14 @@
 
   // here are some active components that do this cool animation while input is focused
   function checkInputFocus() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       let object_class_name = Object.keys(fields)[i];
       const elem = document.getElementById(object_class_name);
       const loadbar = document.getElementById(`loadbar-${object_class_name}`);
-
       if (elem === document.activeElement) {
         loadbar.style.width = "100%";
-      } else {
-        loadbar.style.width = "2px";
+      } else if (elem != document.activeElement) {
+        loadbar.style.width = "0";
       }
     }
   }
@@ -125,9 +141,10 @@
 </script>
 
 <main>
-  <!-- main-page -->
   <div class="sticky-obj" />
   <div class="big-overlay" id="overlay" />
+  <div class="mouse" id="mouse-tracer" />
+  <!-- main-page -->
   <div class="container main-page" id="main-page">
     <nav>
       <ul class="nav-list">
@@ -143,14 +160,21 @@
     <div class="content">
       <h1>Hello!</h1>
       <h3>My name is Jacob and I'm a professional Web Designer.</h3>
-      <button class="btn-cta">My Story</button>
+      <button
+        class="btn-cta"
+        id="cta-about-me"
+        onclick="window.location.href='#about-me'">My Story</button
+      >
+      <!-- i dont know why its red -->
     </div>
   </div>
 
   <!-- end of main  -->
 
   <!-- about-me section  -->
-  <div class="return-link"><a href="#top">go to the top.</a></div>
+  <div class="return-link">
+    <a href="#top">&rightarrow; go to the top</a>
+  </div>
 
   <div class="container about-me" id="about-me">
     <h3>Something about me.</h3>
@@ -165,7 +189,9 @@
         quaerat voluptates.
       </p>
     </div>
-    <button class="btn-cta">Why You should hire me</button>
+    <button class="btn-cta" onclick="window.location.href='#gallery'"
+      >See my projects</button
+    >
   </div>
 
   <!-- end of about-me  -->
@@ -182,7 +208,7 @@
         hic nobis dolor accusamus obcaecati.
       </p>
 
-      <button>Contact ME</button>
+      <button onclick="window.location.href='#contact'">Contact ME</button>
     </div>
 
     <div class="grid-container" id="grid">
@@ -190,18 +216,14 @@
         <div class="image" id="image" />
         <div class="image" id="image" />
         <div class="image" />
-        <div class="image">s</div>
-        <button
-          on:click={() =>
-            (document.getElementById("image").style.opacity = "0")}
-          >{project_btn}</button
-        >
+        <div class="image" />
+        <button>{project_btn}</button>
         <button>{project_btn}</button>
         <button>{project_btn}</button>
         <button>{project_btn}</button>
       </div>
     </div>
-    <a href="/">Expand gallery</a>
+    <!-- <a href="/">Expand gallery</a> -->
   </div>
 
   <!-- end of gallery  -->
@@ -248,8 +270,7 @@
       <div class="error">{errors.subject}</div>
 
       <label for="message">Some text</label>
-      <input
-        type="text"
+      <textarea
         id="message"
         name="message"
         placeholder="Type in your message in!"
@@ -268,6 +289,35 @@
 
 <style>
   /* navigation and main page components  */
+
+  #mouse-tracer {
+    height: 200px;
+    background: #fff;
+    aspect-ratio: 1;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, aquamarine, mediumpurple);
+    animation: rotate 20s infinite;
+    filter: blur(200px);
+    pointer-events: none;
+  }
+
+  @keyframes rotate {
+    from {
+      rotate: 0deg;
+    }
+
+    50% {
+      scale: 1 1.7;
+    }
+
+    to {
+      rotate: 360deg;
+    }
+  }
 
   .big-overlay {
     position: fixed;
@@ -313,13 +363,28 @@
   }
 
   .return-link {
-    z-index: 999;
+    z-index: 99;
     top: 0;
     left: 0;
     position: sticky;
     writing-mode: vertical-lr;
     rotate: 180deg;
     padding-bottom: 1.5rem;
+    animation: up-down 3s infinite;
+  }
+
+  @keyframes up-down {
+    0% {
+      transform: translateY(-5px);
+    }
+
+    45% {
+      transform: translateY(5px);
+    }
+
+    100% {
+      transform: translateY(-5px);
+    }
   }
 
   .return-link > a {
@@ -400,11 +465,11 @@
   /* gallery and projects section  */
 
   .full-image {
-    background-image: url(../images/pobrane.jpg);
-    background-size: cover;
+    background: url(../images/emphie.jpg) no-repeat;
     background-position: center;
-    width: 80%;
-    height: 80%;
+    background-size: 100%;
+    width: 69%;
+    height: 69%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -412,7 +477,7 @@
     position: absolute;
     z-index: -1;
     opacity: 0;
-    transition: All .3s linear;
+    transition: All 0.3s linear;
   }
 
   .gallery {
@@ -420,6 +485,7 @@
   }
 
   .gallery {
+    overflow-x: hidden;
     /* display: flex; */
     height: 100vh;
     /* display: flex; */
@@ -456,7 +522,7 @@
   }
 
   .element_one > .image {
-    background-image: url("../images/pobrane.jpg");
+    background-image: url("../images/emphie.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -502,6 +568,25 @@
     background-color: #393e46;
     /* box-shadow: 0 2px 0 0 #00adb5; */
   }
+  textarea {
+    box-sizing: border-box;
+    width: 40vmin;
+    border: none;
+    padding: 16px 8px;
+    color: #eee;
+    font-size: 1rem;
+    width: 400px;
+    background-color: #393e46;
+    font-family: "Poppins", sans-serif;
+    max-width: 400px;
+    width: auto;
+    min-height: 150px;
+    max-height: 300px;
+  }
+
+  textarea:focus {
+    outline: none;
+  }
 
   footer {
     background-color: rgba(15, 21, 17, 0.4);
@@ -512,6 +597,8 @@
     box-sizing: border-box;
     text-align: center;
     font-size: 8px;
+    bottom: 0;
+    position:relative;
   }
 
   .loadbar {
@@ -520,6 +607,17 @@
     width: 2px;
     height: 2px;
     margin-top: -16px;
+  }
+  #loadbar-fullname {
+    height: 2.5px;
+  }
+
+  #loadbar-subject {
+    height: 2.5px;
+  } 
+
+  #loadbar-message {
+    height: 2.5px;
   }
 
   input:focus {
