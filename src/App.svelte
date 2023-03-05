@@ -39,6 +39,8 @@
         overlay.style.opacity = "0.7";
         overlay.style.zIndex = "100";
         full.style.zIndex = "999";
+        full.style.border = "solid 3px #00ADB5  "
+        full.style.borderRadius= "5px"
         full.style.opacity = "1";
       });
     });
@@ -138,6 +140,8 @@
 
   // Check input focus every 300 milliseconds
   setInterval(checkInputFocus, 300);
+
+  
 </script>
 
 <main>
@@ -159,13 +163,12 @@
 
     <div class="content">
       <h1>Hello!</h1>
-      <h3>My name is Jacob and I'm a professional Web Designer.</h3>
+      <h3>My name is Jacob and I'm a front-end Web Developer.</h3>
       <button
         class="btn-cta"
         id="cta-about-me"
-        onclick="window.location.href='#about-me'">My Story</button
+        onclick="window.location.href='#about-me'">See about me</button
       >
-      <!-- i dont know why its red -->
     </div>
   </div>
 
@@ -196,7 +199,7 @@
 
   <!-- end of about-me  -->
 
-  <!-- gallery section proejcts -->
+  <!-- gallery section projects -->
 
   <div class="container gallery" id="gallery">
     <div class="full-image view" id="full-image" />
@@ -210,7 +213,6 @@
 
       <button onclick="window.location.href='#contact'">Contact ME</button>
     </div>
-
     <div class="grid-container" id="grid">
       <div class="element_one">
         <div class="image" id="image" />
@@ -229,25 +231,25 @@
   <!-- end of gallery  -->
 
   <!-- form  -->
-
   <div class="container contact-me" id="contact">
+    <h3>Contact me</h3>
     <form
       action="action_page.php"
       method="POST"
       on:submit|preventDefault={submitHandler}
     >
-      <label for="fullname">What's your full name:</label>
+      <label for="fullname">Name:</label>
       <input
         type="text"
         id="fullname"
         name="fullname"
-        placeholder="e.g. John Wasinski"
+        placeholder="e.g. John Smith"
         bind:value={fields.fullname}
       />
       <label for="fullname" id="loadbar-fullname" class="loadbar" />
       <div class="error">{errors.fullname}</div>
 
-      <label for="email">What's Your e-mail:</label>
+      <label for="email">Email:</label>
       <input
         type="text"
         id="email"
@@ -258,33 +260,51 @@
       <label for="email" id="loadbar-email" class="loadbar" />
       <div class="error">{errors.email}</div>
 
-      <label for="subject">What are you writing about:</label>
+      <label for="subject">Subject:</label>
       <input
         type="text"
         id="subject"
         name="subject"
-        placeholder="The subject of your message..."
+        placeholder="What are you writing about?"
         bind:value={fields.subject}
       />
       <label for="subject" id="loadbar-subject" class="loadbar" />
       <div class="error">{errors.subject}</div>
 
-      <label for="message">Some text</label>
+      <label for="message">Message:</label>
       <textarea
         id="message"
         name="message"
-        placeholder="Type in your message in!"
+        placeholder="Type in your message!"
         bind:value={fields.message}
       />
       <label for="message" id="loadbar-message" class="loadbar" />
       <div class="error">{errors.message}</div>
 
       <button type="submit" class="btn-cta" value="Send away!">
-        Send Away!</button
+        Send message!</button
       >
     </form>
   </div>
-  <footer>&COPY; 2023 by Jakub Włostowski All Rights Reserved.</footer>
+  <footer>
+    &COPY; 2023 by Jakub Włostowski All Rights Reserved. <div class="socials">
+      <a
+        href="https://github.com/JakeJakob/emphie-portfolio"
+        target="_blank"
+        rel="noreferrer">GitHub</a
+      >
+      <a
+        href="https://github.com/JakeJakob/emphie-portfolio"
+        target="_blank"
+        rel="noreferrer">Linkedin</a
+      >
+      <a
+        href="https://github.com/JakeJakob/emphie-portfolio"
+        target="_blank"
+        rel="noreferrer">Instagram</a
+      >
+    </div>
+  </footer>
 </main>
 
 <style>
@@ -299,7 +319,7 @@
     top: 50%;
     translate: -50% -50%;
     border-radius: 50%;
-    background: linear-gradient(to right, aquamarine, mediumpurple);
+    background: linear-gradient(to right, #00adb5, mediumpurple);
     animation: rotate 20s infinite;
     filter: blur(200px);
     pointer-events: none;
@@ -438,7 +458,6 @@
   p {
     width: 400px;
     font-size: 16px;
-    letter-spacing: 1px;
     padding: 1rem;
   }
 
@@ -486,12 +505,9 @@
 
   .gallery {
     overflow-x: hidden;
-    /* display: flex; */
-    height: 100vh;
-    /* display: flex; */
-    flex-direction: column;
-    /* align-items: center; */
-    justify-content: space-around;
+    overflow-y: hidden;
+    height: auto;
+    margin-bottom: 10rem;
   }
 
   .gallery > h3 {
@@ -513,10 +529,12 @@
   }
 
   .element_one {
+    overflow: hidden;
     width: 80%;
     position: relative;
     display: grid;
-    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
+    /* repeat(4, minmax(200px, 1fr)); */
     grid-template-rows: 1fr;
     grid-gap: 10px;
   }
@@ -546,6 +564,7 @@
 
   .contact-me {
     height: 100vh;
+    flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -557,7 +576,13 @@
     gap: 1rem;
   }
 
+  .contact-me > h3 {
+    font-size: 42px;
+    color: #00adb5;
+  }
+
   input {
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
     width: 40vmin;
     border: none;
@@ -597,8 +622,27 @@
     box-sizing: border-box;
     text-align: center;
     font-size: 8px;
-    bottom: 0;
-    position:relative;
+    bottom: -5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .socials {
+    display: flex;
+    gap: 40px;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    justify-content: right;
+  }
+
+  .socials {
+    width: 50px;
+    aspect-ratio: 3;
+    background-size: cover;
+    background: url("../images/GitHub_Logo_White.png") no-repeat 0 0;
   }
 
   .loadbar {
@@ -614,7 +658,7 @@
 
   #loadbar-subject {
     height: 2.5px;
-  } 
+  }
 
   #loadbar-message {
     height: 2.5px;
@@ -630,5 +674,68 @@
     font-weight: bold;
     color: red;
     margin-left: 5px;
+  }
+
+  @media (max-width: 640px) {
+    main {
+      overflow-x: hidden;
+    }
+    .content-aboutme {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    p {
+      width: auto;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      margin-top: 10rem;
+    }
+
+    .container_cta {
+      display: block;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+    }
+
+    .gallery > h3 {
+      margin: 0;
+      padding: 0;
+    }
+    .element_one > button {
+      display: none;
+    }
+
+    .grid-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60vh;
+    }
+    .element_one {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    .contact-me {
+      overflow: hidden;
+    }
+    footer {
+      transform: translateY(10rem);
+      justify-content: left;
+    }
+    .socials {
+      gap: 1rem;
+    }
+    main {
+      overflow-x: initial !important;
+    }
   }
 </style>
