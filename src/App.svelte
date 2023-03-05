@@ -39,8 +39,8 @@
         overlay.style.opacity = "0.7";
         overlay.style.zIndex = "100";
         full.style.zIndex = "999";
-        full.style.border = "solid 3px #00ADB5  "
-        full.style.borderRadius= "5px"
+        full.style.border = "solid 3px #00ADB5  ";
+        full.style.borderRadius = "5px";
         full.style.opacity = "1";
       });
     });
@@ -140,8 +140,6 @@
 
   // Check input focus every 300 milliseconds
   setInterval(checkInputFocus, 300);
-
-  
 </script>
 
 <main>
@@ -465,7 +463,7 @@
     border: solid #00adb5;
     border-width: 3px 0 0 3px;
 
-    background-image: url("C:\Users\Kuba Wlos\Documents\Programming\Emphie_solutions_portfolio_jakeww\Portfolio\images\IMG_1252.jpeg");
+    background-image: url("../images/IMG_1252.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -582,7 +580,7 @@
   }
 
   input {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     box-sizing: border-box;
     width: 40vmin;
     border: none;
